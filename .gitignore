@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Better-SQLite3 db files
+*.db
