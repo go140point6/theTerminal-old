@@ -27,7 +27,7 @@ module.exports = {
 
         console.log("Current XRP price is $" + XRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
-        console.log("Count is: " + results6;)
+        console.log("Count is: " + results6);
 
         let num = 0;
         let embedFields = [];
