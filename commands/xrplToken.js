@@ -21,10 +21,13 @@ module.exports = {
 
         const ticker = (interaction.options.getString("ticker", true)).toUpperCase();
         const stmt5 = db.prepare('SELECT currency, issuer, name, logo_file FROM xrplTokens WHERE currency = ? COLLATE NOCASE');
+        const stmt6 = db.prepare('SELECT COUNT(*)');
         var results5 = stmt5.all(ticker);
+        var results6 = stmt6.get();
 
         console.log("Current XRP price is $" + XRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
+        console.log("Count is: " + results6;)
 
         let num = 0;
         let embedFields = [];
