@@ -69,7 +69,7 @@ module.exports = {
                 interaction.editReply({ content: `Some error building embed, please try again or ping my overseer.`});
                 }                    
             } else {
-            interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
+            interaction.editReply({ content: `I currently know of ${results6.id} tokens, but ${ticker} is unknown to me.  Please ask my overseer to update the database.` });
         }
     }
 };
