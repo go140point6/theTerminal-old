@@ -21,10 +21,13 @@ module.exports = {
 
         const ticker = (interaction.options.getString("ticker", true)).toUpperCase();
         const stmt5 = db.prepare('SELECT currency, issuer, name, logo_file FROM xrplTokens WHERE currency = ? COLLATE NOCASE');
+        const stmt6 = db.prepare('SELECT COUNT(*) id FROM xrplTokens');
         var results5 = stmt5.all(ticker);
+        var results6 = stmt6.get();
 
         console.log("Current XRP price is $" + XRP.currentXRP);
         console.log("Number in array for " + ticker + " is " + results5.length);
+        console.log("Count is: " + results6.id);
 
         let num = 0;
         let embedFields = [];
@@ -66,7 +69,7 @@ module.exports = {
                 interaction.editReply({ content: `Some error building embed, please try again or ping my overseer.`});
                 }                    
             } else {
-            interaction.editReply({ content: `Sorry, ${ticker} is unknown to me, please ask my overseer to update the database.` });
+            interaction.editReply({ content: `I currently know of ${results6.id} tokens, but ${ticker} is unknown to me.  Please ask my overseer to update the database.` });
         }
     }
 };
