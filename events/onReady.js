@@ -12,7 +12,7 @@ function onReady(client) {
     console.log(`Ready! Logged in as ${client.user.tag}`)
     
     let guild = client.get_guild;
-    console.log(guild);
+    console.log("Guild: " + guild);
 
     client.commands = new Collection();
 
