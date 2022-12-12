@@ -9,11 +9,8 @@ const axios = require('axios');
 const Database = require('better-sqlite3');
 
 function onReady(client) {
-    console.log(`Ready! Logged in as ${client.user.tag}`)
+    console.log(`Ready! Logged in as ${client.user.tag} in server ${guild.id}`)
     
-    let guild = client.guild.id;
-    console.log("Guild: " + guild);
-
     client.commands = new Collection();
 
     const commands = [];
