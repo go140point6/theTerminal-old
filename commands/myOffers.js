@@ -53,7 +53,7 @@ module.exports = {
                     console.log(offer.buy[0].Amount);
                     let rawAmount = (offer.buy[0].Amount)
                     let amount = Number(rawAmount);
-                    console.log(amount);
+                    console.log(typeof amount);
                     //console.log(typeof Number(amount));
                     //console.log(rawAmount / 1000000);
                     //let amount = (Number(rawAmount) / 1000000)
