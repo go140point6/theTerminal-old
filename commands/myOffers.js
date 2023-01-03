@@ -21,6 +21,7 @@ module.exports = {
 
         const address = interaction.options.getString("address", true);
         console.log('Address to check: ' + address);
+        try {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
                 //console.log(res.data.data.offers);
@@ -55,5 +56,9 @@ module.exports = {
                interaction.editReply({ embeds: [embedOffers]});
             } 
          })
+    } catch(err) {
+        console.error(err);
+        interaction.editReply({ content: `Some error building embed, please try again or ping my overseer.`});
+        }
     }
 };
