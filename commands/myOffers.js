@@ -30,7 +30,7 @@ module.exports = {
                 offers.forEach(function(offer) {
                     console.log(offer.buy);
                 })
-                */
+                
                let offers = res.data.data.offers;
                let results = [];
 
@@ -41,6 +41,17 @@ module.exports = {
                });
 
                console.log(results);
+               */
+               
+               let offers = res.data.data.offers;
+               let embedFields = [];
+
+               offers.forEach(offer => {
+                if (Object.keys(offer.buy).length !== 0) {
+                    let amount = (offer.buy.Amount / 1000000)
+                    embedFields.push({ name: offer.buy.NFTokenID, value: amount})
+                }
+               })
 
                const embedOffers = new EmbedBuilder()
                .setColor('DarkRed')
