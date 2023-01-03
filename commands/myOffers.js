@@ -48,8 +48,9 @@ module.exports = {
 
                offers.forEach(offer => {
                 if (Object.keys(offer.buy).length !== 0) {
-                    let amount = (offer.buy.Amount)
-                    embedFields.push({ name: offer.buy.NFTokenID, value: amount})
+                    console.log(offer.buy.NFTokenID)
+                    console.log(offer.buy.Amount)
+                    //embedFields.push({ name: offer.buy.NFTokenID, value: amount})
                 }
                })
 
