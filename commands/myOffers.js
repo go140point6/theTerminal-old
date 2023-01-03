@@ -50,8 +50,8 @@ module.exports = {
                 if (Object.keys(offer.buy).length !== 0) {
                     //console.log(offer.buy.NFTokenID)
                     //console.log(offer.buy.Amount)
-                    //console.log(offer.buy.Amount);
-                    console.log(offer);
+                    console.log(offer.buy[0].Amount);
+                    //console.log(offer);
                     //embedFields.push({ name: offer.buy.NFTokenID, value: amount})
                 }
                })
