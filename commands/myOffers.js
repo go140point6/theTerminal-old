@@ -52,15 +52,16 @@ module.exports = {
                     //console.log(offer.buy.Amount)
                     console.log(offer.buy[0].Amount);
                     let rawAmount = (offer.buy[0].Amount)
-                    Number(rawAmount);
+                    let amount = Number(rawAmount);
+                    console.log(amount);
                     //console.log(typeof Number(amount));
-                    console.log(rawAmount / 1000000);
-                    let amount = (Number(rawAmount) / 1000000)
+                    //console.log(rawAmount / 1000000);
+                    //let amount = (Number(rawAmount) / 1000000)
 
 
                     
                     //console.log(offer);
-                    embedFields.push({ name: offer.buy[0].NFTokenID, value: amount})
+                    embedFields.push({ name: offer.buy[0].NFTokenID, value: "1"})
                 }
                })
 
