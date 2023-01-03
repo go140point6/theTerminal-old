@@ -23,7 +23,11 @@ module.exports = {
         console.log('Address to check: ' + address);
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
-                console.log(res.data.offers[0])
+                res.data.forEach(obj => {
+                    Object.entries(obj).forEach(([key, value]) => {
+                        console.log(`${key} ${value}`);
+                    })
+                })
             }
         })
     }
