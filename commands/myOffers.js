@@ -26,7 +26,7 @@ module.exports = {
                 //console.log(res.data.data.offers);
                 let offers = res.data.data.offers;
                 offers.forEach(function(offer) {
-                    console.log(offer);
+                    console.log(offer.buy);
                 })
             }
         })
