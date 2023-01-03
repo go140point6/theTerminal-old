@@ -8,8 +8,8 @@ const client = require('../index');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('myOffers')
-        .setDescription('Current offers for NFT\'s owned by a particular address')
+        .setName('offers')
+        .setDescription('Current offers for NFT owned by a particular address')
         .addStringOption((option) =>
             option
                 .setName("address")
