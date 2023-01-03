@@ -59,7 +59,7 @@ module.exports = {
 
                     
                     //console.log(offer);
-                    embedFields.push({ name: offer.buy[0].NFTokenID, value: "two"})
+                    embedFields.push({ name: offer.buy[0].NFTokenID, value: "2"})
                 }
                })
 
