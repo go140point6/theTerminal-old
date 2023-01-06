@@ -12,10 +12,6 @@ const { validateEnv } = require('./utils/validateEnv');
     const client = new Client({ intents: GatewayIntentBits });
     module.exports = client;
 
-    client.on('guildCreate', (guild) => {
-        console.log(`guildCreate: ${guild}`);
-    });
-
     client.on(Events.ClientReady, async() => await onReady(client));
 
     client.on(Events.InteractionCreate, async interaction => { 
