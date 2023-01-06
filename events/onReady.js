@@ -13,8 +13,8 @@ function onReady(client) {
     console.log(`Ready! Logged in as ${client.user.tag}`)
     //const guilds = client.guilds.cache.map(guild => guild.id);
     //console.log(guilds);
-    const guild = client.guilds.cache.get('id');
-    console.log(guild);
+    const guilds = client.guilds.cache.get(guild => guild.id);
+    console.log(guilds);
     console.log(process.env.GUILD_ID);
 
     client.commands = new Collection();
