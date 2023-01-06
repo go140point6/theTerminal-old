@@ -11,10 +11,12 @@ const Database = require('better-sqlite3');
 function onReady(client) {
     //console.log(`Ready! Logged in as ${client.user.tag} in server ${guild.id}`)
     console.log(`Ready! Logged in as ${client.user.tag}`)
+    console.log(`${client.guilds.cache.size} Servers`)
+    console.log(`${client.guilds.cache.id}`)
     //const guilds = client.guilds.cache.map(guild => guild.id);
     //console.log(guilds);
-    const guild = await client.guilds.fetch(guildId);
-    console.log(guild);
+    const guilds = client.guilds.fetch(guild => guild.id);
+    console.log(guilds);
     console.log(process.env.GUILD_ID);
 
     client.commands = new Collection();
