@@ -11,6 +11,8 @@ const Database = require('better-sqlite3');
 function onReady(client) {
     //console.log(`Ready! Logged in as ${client.user.tag} in server ${guild.id}`)
     console.log(`Ready! Logged in as ${client.user.tag}`)
+    const server = client.guilds.cache.get('guildID')
+    console.log(`GuildID: ${server}`)
 
     client.commands = new Collection();
 
