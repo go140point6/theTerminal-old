@@ -14,8 +14,9 @@ async function onReady(client) {
     console.log(`${client.guilds.cache.size} Servers`)
     //const guilds = client.guilds.cache.map(guild => guild.id);
     //console.log(guilds);
-    const guilds = await client.guilds.fetch(guild => guild.id);
-    console.log(guilds.id);
+    //const guilds = await client.guilds.fetch(guild => guild.id);
+    //console.log(guilds);
+    await guild.fetch().then((guild) => console.log(guild.id)).catch(console.error);
     console.log(process.env.GUILD_ID);
 
     client.commands = new Collection();
