@@ -15,7 +15,7 @@ async function onReady(client) {
     //const guilds = client.guilds.cache.map(guild => guild.id);
     //console.log(guilds);
     const guilds = await client.guilds.fetch(guild => guild.id);
-    console.log(guilds);
+    console.log(guilds.id);
     console.log(process.env.GUILD_ID);
 
     client.commands = new Collection();
