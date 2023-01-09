@@ -10,11 +10,11 @@ module.exports = {
             new ButtonBuilder()
                 .setCustomId('buy')
                 .setLabel('BUY')
-                .setStyle(ButtonStyle.Primary),
+                .setStyle(ButtonStyle.Success),
             new ButtonBuilder()
                 .setCustomId('sell')
                 .setLabel('SELL')
-                .setStyle(ButtonStyle.Primary),
+                .setStyle(ButtonStyle.Danger),
         );
 
     await interaction.reply({ content: 'Would you like to view BUY or SELL offers?', components: [row] });
