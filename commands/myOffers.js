@@ -4,8 +4,16 @@ const client = require('../index');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
-        .setDescription('Current BUY or SELL offers for an address'),
+        .setDescription('Current BUY or SELL offers for an address')
+        .addStringOption((option) =>
+        option
+            .setName("address")
+            .setDescription("The address you want to check.")
+            .setRequired(true)
+    ),
     async execute(interaction) {
+        const address = interaction.options.getString("address", true);
+
         const row = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
@@ -22,7 +30,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`Would you like to view BUY or SELL offers?`)
+            .setDescription(`Would you like to view BUY or SELL offers for ${address} ?`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
