@@ -5,7 +5,7 @@ async function onInteraction(interaction) {
         await command.execute(interaction);
     } else if (interaction.isButton()) {
         console.log(interaction);
-        interaction.reply({ content: 'Don\'t touch me there!' });
+        interaction.editReply({ content: 'Don\'t touch me there!' });
     } else {
         return;
     }
