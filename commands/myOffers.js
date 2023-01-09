@@ -18,7 +18,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger),
         );
 
-        const embedToken = new EmbedBuilder()
+        const embed = new EmbedBuilder()
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
