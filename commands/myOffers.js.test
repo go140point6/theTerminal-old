@@ -2,7 +2,7 @@ const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Event
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('myOffers')
+        .setName('myoffers')
         .setDescription('Current BUY or SELL offers for an address'),
     async execute(interaction) {
         const row = new ActionRowBuilder()
