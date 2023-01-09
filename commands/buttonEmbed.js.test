@@ -1,0 +1,36 @@
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require('discord.js');
+
+const embedPing = new EmbedBuilder()
+	.setTitle('Ping!')
+	.addFields(
+		{ name: 'Ping', value: 'Pong!'},
+	);
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('ping')
+		.setDescription('Replies with Pong!'),
+	async execute(interaction) {
+		//await interaction.reply('Pong!');
+		await interaction.reply({ embeds: [embedPing] });
+	},
+};
+
+
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('button')
+        .setDescription('Shows how buttons work'),
+    async execute(interaction) {
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('primary')
+                .setLabel('Click me!')
+                .setStyle(ButtonStyle.Primary),
+        );
+
+    await interaction.reply({ content: 'I think you should,', components: [row] });
+    },
+};
