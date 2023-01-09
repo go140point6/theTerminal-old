@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,6 +17,17 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger),
         );
 
-    await interaction.reply({ content: 'Would you like to view BUY or SELL offers?', components: [row] });
+        const embedToken = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`Would you like to view BUY or SELL offers?`)
+            .setThumbnail(client.user.avatarURL())
+            //.addFields(embedFields)
+            //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+            .setTimestamp()
+            //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
+
+    await interaction.reply({ embeds: [embed], components: [row] });
     },
 };
