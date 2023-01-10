@@ -37,6 +37,8 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
 
-    await interaction.reply({ embeds: [embed], components: [row] });
+    //await interaction.reply({ embeds: [embed], components: [row] });
+    const MSG = await message.channel.send({embeds: [embed], components: [row]});
+
     },
 };
