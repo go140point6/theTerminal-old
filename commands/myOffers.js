@@ -77,7 +77,7 @@ module.exports = {
     */
 
     //console.log(interaction.customId);
-    console.log(interaction);
+    console.log(interaction.user.id);
     
     const buyFilter = i => i.customId === 'buy';
     const sellFilter = i => i.customId === 'sell';
