@@ -12,6 +12,7 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        await interaction.deferReply();
         const address = interaction.options.getString("address", true);
 
         const row = new ActionRowBuilder()
