@@ -4,7 +4,7 @@ const { Client, Events } = require('discord.js');
 const { GatewayIntentBits } = require('./config/GatewayIntentBits');
 const { onReady } = require('./events/onReady');
 const { onInteraction } = require('./events/onInteraction');
-//const { onMessage } = require('./events/onMessage');
+const { onMessage } = require('./events/onMessage');
 const { validateEnv } = require('./utils/validateEnv');
 
 (async () => {
