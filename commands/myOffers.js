@@ -51,6 +51,7 @@ module.exports = {
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
     */
 
+    /* Good example of embed update
     const filter = i => i.customId === 'buy';
 
     const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
@@ -73,6 +74,21 @@ module.exports = {
     });
 
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+    */
 
-    },
+    collector.on('collect', async i => {
+        if (i.customId === 'buy') {
+            await i.deferUpdate();
+            await wait(4000);
+            await i.editReply({ content: 'You clicked the BUY button!', components: [] });
+        } else if (i.customId === 'sell') {
+            await i.deferUpdate();
+            await wait(4000);
+            await i.editReply({ content: 'You clicked the SELL button!', components: [] });
+        }
+    });
+    
+    collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+
+    }
 };
