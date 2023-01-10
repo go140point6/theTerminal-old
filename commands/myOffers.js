@@ -109,7 +109,7 @@ module.exports = {
         //console.log(`Collected ${collected.size} items`)
         if (collected.size == 0) {
             //console.log(`It was zero`);
-            const editEmbed = new EmbedBuilder()
+            const shutdownEmbed = new EmbedBuilder()
 
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
@@ -121,7 +121,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
-            await interaction.update({ embeds: [editEmbed], components: [] });
+            await collected.update({ embeds: [shutdownEmbed], components: [] });
         } else {
             console.log((`Collected ${collected.size} items`));
         }
