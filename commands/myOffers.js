@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const client = require('../index');
 
 module.exports = {
@@ -40,5 +40,19 @@ module.exports = {
     await interaction.reply({ embeds: [embed], components: [row] });
     //const MSG = await message.channel.send({embeds: [embed], components: [row]});
 
+    const collector = message.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
+    
+    collector.on('collect', i => {
+        if (i.user.id === interaction.user.id) {
+            i.reply(`${i.user.id} clicked on the ${i.buy} button.`);
+        } else {
+            i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
+        }
+    });
+    
+    collector.on('end', collected => {
+        console.log(`Collected ${collected.size} interactions.`);
+    });
+    
     },
 };
