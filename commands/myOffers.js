@@ -84,6 +84,7 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
+        console.log(i);
         /*
         if (i.user.id === interaction.user.id) {
           
