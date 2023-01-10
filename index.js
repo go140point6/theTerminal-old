@@ -21,7 +21,7 @@ const { validateEnv } = require('./utils/validateEnv');
         //console.log(interaction);
     });
     
-    client.on(Events.MessageCreate, async(message) => await onMessage(message));
+    //client.on(Events.MessageCreate, async(message) => await onMessage(message));
 
     await client.login(process.env.BOT_TOKEN);
 })();
