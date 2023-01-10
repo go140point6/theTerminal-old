@@ -84,8 +84,9 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
-    
+        /*
         if (i.user.id === interaction.user.id) {
+          
             const editEmbed = new EmbedBuilder()
 
                 .setColor('DarkRed')
@@ -104,6 +105,7 @@ module.exports = {
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
+        */
     }) 
 
     collector.on('end', async collected => {
