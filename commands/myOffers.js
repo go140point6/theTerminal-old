@@ -79,12 +79,9 @@ module.exports = {
     //console.log(interaction.customId);
     console.log(interaction.user.id);
     
-    const buyFilter = i => i.customId === 'buy';
-    const sellFilter = i => i.customId === 'sell';
+    const filter = i => i.user.id === interaction.user.id;
     
-    //const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
-    
-    const collector = interaction.channel.createMessageComponentCollector({ sellFilter, time: 15000 });
+    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
     collector.on('collect', async i => {
         const editEmbed = new EmbedBuilder()
