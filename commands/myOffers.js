@@ -108,7 +108,7 @@ module.exports = {
     collector.on('end', collected => {
         console.log(`Collected ${collected.size} items`)
         console.log(interaction.user.id);
-        console.log(i.user.username);
+        console.log(collected);
     });
     }
 };
