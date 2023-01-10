@@ -84,6 +84,7 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
 
     collector.on('collect', async i => {
+    
         if (i.user.id === interaction.user.id) {
             const editEmbed = new EmbedBuilder()
 
@@ -102,8 +103,12 @@ module.exports = {
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
-    });
+    }) 
 
-    collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+    collector.on('end', collected => {
+        console.log(`Collected ${collected.size} items`)
+        console.log(interaction.user.id);
+        console.log(i.user.username);
+    });
     }
 };
