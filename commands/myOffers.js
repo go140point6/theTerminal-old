@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
+const wait = require('node:timers/promises').setTimeout;
 const client = require('../index');
 
 module.exports = {
@@ -75,6 +76,8 @@ module.exports = {
 
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
     */
+
+    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
     collector.on('collect', async i => {
         if (i.customId === 'buy') {
