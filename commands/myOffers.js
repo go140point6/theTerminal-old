@@ -38,7 +38,16 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
 
     await interaction.reply({ embeds: [embed], components: [row] });
-    //const MSG = await message.channel.send({embeds: [embed], components: [row]});
-    
+
+    const filter = i => i.customId === 'buy';
+
+    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+
+    collector.on('collect', async i => {
+	    await i.update({ content: 'A button was clicked!', components: [] });
+    });
+
+    collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+
     },
 };
