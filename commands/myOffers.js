@@ -81,7 +81,7 @@ module.exports = {
     
     //const filter = i => i.user.id === interaction.user.id;
     
-    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
+    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
     
@@ -108,9 +108,22 @@ module.exports = {
     collector.on('end', collected => {
         //console.log(`Collected ${collected.size} items`)
         if (collected.size == 0) {
-            console.log(`It was zero`);
+            //console.log(`It was zero`);
+            const editEmbed = new EmbedBuilder()
+
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`No input, systems shutting down`)
+            .setThumbnail(client.user.avatarURL())
+            //.addFields(embedFields)
+            //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+            .setTimestamp()
+            //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
+        
+            await i.update({ embeds: [editEmbed], components: [] });
         } else {
-            console.log(`It was not zero`);
+            console.log((`Collected ${collected.size} items`));
         }
     });
     }
