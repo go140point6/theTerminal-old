@@ -121,7 +121,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
-            await collected.update({ embeds: [shutdownEmbed], components: [] });
+            await interaction.update({ embeds: [shutdownEmbed], components: [] });
         } else {
             console.log((`Collected ${collected.size} items`));
         }
