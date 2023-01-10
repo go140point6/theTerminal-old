@@ -12,7 +12,6 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        await interaction.deferReply();
         const address = interaction.options.getString("address", true);
 
         const row = new ActionRowBuilder()
@@ -70,7 +69,7 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
             
 	    //await i.update({ content: 'A button was clicked!', components: [] });
-        await i.editReply({ embeds: [editEmbed], components: [] });
+        await i.reply({ embeds: [editEmbed], components: [] });
     });
 
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
