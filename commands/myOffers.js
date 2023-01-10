@@ -100,6 +100,7 @@ module.exports = {
             
 	        //await i.update({ content: 'A button was clicked!', components: [] });
             await i.update({ embeds: [editEmbed], components: [] });
+            collector.stop('Collector stopped manually');
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
