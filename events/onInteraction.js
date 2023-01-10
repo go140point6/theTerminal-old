@@ -1,6 +1,7 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonStyle } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
+const address = require('../myOffers');
 
 async function onInteraction(interaction) {
     if (interaction.isChatInputCommand()) {
