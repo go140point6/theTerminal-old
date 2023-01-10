@@ -39,17 +39,6 @@ module.exports = {
 
     await interaction.reply({ embeds: [embed], components: [row] });
     //const MSG = await message.channel.send({embeds: [embed], components: [row]});
-
-    client.on(Events.MessageCreate, async(message) => {
-        const filter = i => {
-            i.deferUpdate();
-            return i.user.id === interaction.user.id;
-        };
-        
-        message.awaitMessageComponent({ filter, componentType: ComponentType.StringSelect, time: 60000 })
-            .then(interaction => interaction.editReply(`You selected ${interaction.values.join(', ')}!`))
-            .catch(err => console.log(`No interactions were collected.`));
     
-        })
     },
 };
