@@ -76,9 +76,11 @@ module.exports = {
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
     */
 
-    const filter = i => i.customId === 'buy';
-    const filter = i => i.customId === 'sell';
-    const filter = i => i.customId === 'jojo';
+    if (i.customId === 'buy') {
+        const filter = i => i.customId === 'buy';    
+    } else if (i.customId === 'sell') {
+        const filter = i => i.customId === 'sell';    
+    }
     console.log(filter);
     
 
