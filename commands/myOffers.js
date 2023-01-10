@@ -77,7 +77,7 @@ module.exports = {
     */
 
     
-    const filter = i => i.customId === 'buy';        
+    const filter = i => i.customId;        
     console.log(filter);
     
 
