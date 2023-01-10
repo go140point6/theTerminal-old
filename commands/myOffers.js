@@ -56,7 +56,11 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
     collector.on('collect', async i => {
-	    await i.update({ content: 'A button was clicked!', components: [] });
+        const editEmbed = new EmbedBuilder()
+            .setDescription(`You clicked a button and I removed them below`)
+	    //await i.update({ content: 'A button was clicked!', components: [] });
+
+        i.update({ embeds: [editEmbed] });
     });
 
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
