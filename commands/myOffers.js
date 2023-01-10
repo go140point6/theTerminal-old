@@ -69,6 +69,7 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
             
 	    //await i.update({ content: 'A button was clicked!', components: [] });
+        await i.delete();
         await i.reply({ embeds: [editEmbed], components: [] });
     });
 
