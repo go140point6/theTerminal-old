@@ -79,25 +79,29 @@ module.exports = {
     //console.log(interaction.customId);
     console.log(interaction.user.id);
     
-    const filter = i => i.user.id === interaction.user.id;
+    //const filter = i => i.user.id === interaction.user.id;
     
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
 
     collector.on('collect', async i => {
-        const editEmbed = new EmbedBuilder()
+        if (i.user.id === interaction.user.id) {
+            const editEmbed = new EmbedBuilder()
 
-            .setColor('DarkRed')
-            .setTitle(`Welcome to The Terminal`)
-            //.setAuthor({ name: client.user.username })
-            .setDescription(`You clicked a button and I removed them below`)
-            .setThumbnail(client.user.avatarURL())
-            //.addFields(embedFields)
-            //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
-            .setTimestamp()
-            //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
+                .setColor('DarkRed')
+                .setTitle(`Welcome to The Terminal`)
+                //.setAuthor({ name: client.user.username })
+                .setDescription(`${i.user.username} clicked on ${i.customId} button`)
+                .setThumbnail(client.user.avatarURL())
+                //.addFields(embedFields)
+                //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                .setTimestamp()
+                //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
             
-	    //await i.update({ content: 'A button was clicked!', components: [] });
-        await i.update({ embeds: [editEmbed], components: [] });
+	        //await i.update({ content: 'A button was clicked!', components: [] });
+            await i.update({ embeds: [editEmbed], components: [] });
+        } else {
+            i.reply({ content: `These buttons are not for you!`, ephemeral: true });
+        }
     });
 
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
