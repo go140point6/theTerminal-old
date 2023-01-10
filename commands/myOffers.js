@@ -106,9 +106,12 @@ module.exports = {
     }) 
 
     collector.on('end', collected => {
-        console.log(`Collected ${collected.size} items`)
-        console.log(collected.user.id);
-        console.log(collected.user.username);
+        //console.log(`Collected ${collected.size} items`)
+        if (collected.size == 0) {
+            console.log(`It was zero`);
+        } else {
+            console.log(`It was not zero`);
+        }
     });
     }
 };
