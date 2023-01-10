@@ -41,19 +41,14 @@ module.exports = {
     //const MSG = await message.channel.send({embeds: [embed], components: [row]});
 
     client.on(Events.MessageCreate, async(message) => {
-        const collector = message.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
-    
-        collector.on('collect', i => {
-            if (i.user.id === interaction.user.id) {
-                i.reply(`${i.user.id} clicked on the ${i.buy} button.`);
-            } else {
-                i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
-            }
-        });
-    
-        collector.on('end', collected => {
-            console.log(`Collected ${collected.size} interactions.`);
-        });
+        const filter = i => {
+            i.deferUpdate();
+            return i.user.id === interaction.user.id;
+        };
+        
+        message.awaitMessageComponent({ filter, componentType: ComponentType.StringSelect, time: 60000 })
+            .then(interaction => interaction.editReply(`You selected ${interaction.values.join(', ')}!`))
+            .catch(err => console.log(`No interactions were collected.`));
     
         })
     },
