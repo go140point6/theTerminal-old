@@ -76,11 +76,14 @@ module.exports = {
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
     */
 
-    console.log(interaction.customId);
+    //console.log(interaction.customId);
 
-    const filter = i => i.customId;      
+    const buyFilter = i => i.customId === 'buy';
+    const sellFilter = i => i.customId === 'sell';
     
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+    //const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+    
+    const collector = interaction.channel.createMessageComponentCollector({ sellFilter, time: 15000 });
 
     collector.on('collect', async i => {
         const editEmbed = new EmbedBuilder()
