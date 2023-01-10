@@ -76,11 +76,10 @@ module.exports = {
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
     */
 
-    
-    const filter = i => i.customId;        
-    console.log(filter);
-    
+    console.log(interaction.customId);
 
+    const filter = i => i.customId;      
+    
     const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
     collector.on('collect', async i => {
