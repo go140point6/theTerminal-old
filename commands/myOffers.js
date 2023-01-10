@@ -77,7 +77,7 @@ module.exports = {
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
     */
 
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+    const collector = interaction.channel.createMessageComponentCollector();
 
     collector.on('collect', async i => {
         if (i.customId === 'buy') {
