@@ -40,5 +40,3 @@ module.exports = {
     await interaction.reply({ embeds: [embed], components: [row] });
     },
 };
-
-module.exports = address;

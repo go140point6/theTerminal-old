@@ -1,7 +1,6 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonStyle } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
-const address = require('../myOffers');
 
 async function onInteraction(interaction) {
     if (interaction.isChatInputCommand()) {
@@ -11,8 +10,8 @@ async function onInteraction(interaction) {
     } else if (interaction.isButton()) {
 
         //console.log(interaction);
-        //interaction.reply({ content: 'Don\'t touch me there!' });
-        interaction.reply({ content: `${address}` })
+        interaction.reply({ content: 'Don\'t touch me there!' });
+        //interaction.reply({ content: `${address}` })
 
 
 
