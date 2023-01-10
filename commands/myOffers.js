@@ -69,7 +69,7 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
             
 	    //await i.update({ content: 'A button was clicked!', components: [] });
-        await i.update({ embeds: [editEmbed], components: [] });
+        await i.editReply({ embeds: [editEmbed], components: [] });
     });
 
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
