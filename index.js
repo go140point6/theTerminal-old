@@ -13,7 +13,7 @@ const { validateEnv } = require('./utils/validateEnv');
     const client = new Client({ intents: GatewayIntentBits });
     module.exports = client;
 
-    client.on(Events.ClientReady, async() => await onReady(client));
+    client.once(Events.ClientReady, async() => await onReady(client));
 
     client.on(Events.InteractionCreate, async interaction => { 
         onInteraction(interaction)
@@ -21,7 +21,7 @@ const { validateEnv } = require('./utils/validateEnv');
         //console.log(interaction);
     });
     
-    //client.on(Events.MessageCreate, async(message) => await onMessage(message));
+    client.on(Events.MessageCreate, async(message) => await onMessage(message));
 
     await client.login(process.env.BOT_TOKEN);
 })();
