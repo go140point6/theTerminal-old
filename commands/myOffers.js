@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const client = require('../index');
-const message = require('../onMessage');
+//const message = require('../onMessage');
 
 module.exports = {
     data: new SlashCommandBuilder()
