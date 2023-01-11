@@ -85,8 +85,11 @@ module.exports = {
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
-          
-            const editEmbed = new EmbedBuilder()
+            
+            const address = interaction.options.getString("address", true);
+            console.log('Address to check: ' + address);
+            
+            const editBuyEmbed = new EmbedBuilder()
 
                 .setColor('DarkRed')
                 .setTitle(`Welcome to The Terminal`)
@@ -99,8 +102,25 @@ module.exports = {
                 //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
             
 	        //await i.update({ content: 'A button was clicked!', components: [] });
-            await i.update({ embeds: [editEmbed], components: [] });
+            await i.update({ embeds: [editBuyEmbed], components: [] });
             collector.stop('Collector stopped manually');
+         } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
+          
+                const editSellEmbed = new EmbedBuilder()
+    
+                    .setColor('DarkRed')
+                    .setTitle(`Welcome to The Terminal`)
+                    //.setAuthor({ name: client.user.username })
+                    .setDescription(`${i.user.username} clicked on ${i.customId} button`)
+                    .setThumbnail(client.user.avatarURL())
+                    //.addFields(embedFields)
+                    //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                    .setTimestamp()
+                    //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
+                
+                //await i.update({ content: 'A button was clicked!', components: [] });
+                await i.update({ embeds: [editSellEmbed], components: [] });
+                collector.stop('Collector stopped manually');    
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
