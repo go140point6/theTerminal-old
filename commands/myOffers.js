@@ -115,8 +115,7 @@ module.exports = {
                      }
                     })
                     //console.log(embedFields)
-                }
-            })
+              
 
             const editBuyEmbed = new EmbedBuilder()
                 console.log(embedFields)
@@ -133,6 +132,8 @@ module.exports = {
 	        //await i.update({ content: 'A button was clicked!', components: [] });
             await i.update({ embeds: [editBuyEmbed], components: [] });
             collector.stop('Collector stopped manually');
+            }
+        })
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
           
                 const editSellEmbed = new EmbedBuilder()
