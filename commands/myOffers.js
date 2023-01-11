@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const client = require('../index');
-//const onMessage = require('../onMessage');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -116,7 +115,7 @@ module.exports = {
             //console.log(`It was zero`);
             console.log(collected)
             console.log(reason)
-            console.log(onMessage)
+            //console.log(interaction)
             /*
             const shutdownEmbed = new EmbedBuilder()
 
