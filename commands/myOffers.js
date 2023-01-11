@@ -116,6 +116,7 @@ module.exports = {
             //console.log(`It was zero`);
             console.log(collected)
             console.log(reason)
+            console.log(message)
             /*
             const shutdownEmbed = new EmbedBuilder()
 
