@@ -3,6 +3,8 @@ async function onMessage(message) {
     
     //message.reply("Bingo")
     //console.log(message);
+
+    const onMessage = message;
 };
 
 module.exports = { 
