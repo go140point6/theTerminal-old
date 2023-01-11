@@ -93,17 +93,17 @@ module.exports = {
             await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
                 if(res.data) {
                     let offers = res.data.data.offers;
-                    let embedFields = [];
+                    const embedFields = [];
      
                     offers.forEach(offer => {
                      if (Object.keys(offer.buy).length !== 0) {
                          //console.log(offer.buy.NFTokenID)
                          //console.log(offer.buy.Amount)
-                         console.log(offer.buy[0].Amount);
+                         //console.log(offer.buy[0].Amount);
                          let rawAmount = (offer.buy[0].Amount)
                          let amount = (Number(rawAmount))/1000000;
-                         console.log(typeof amount);
-                         console.log(amount);
+                         //console.log(typeof amount);
+                         //console.log(amount);
                          //console.log(typeof Number(amount));
                          //console.log(rawAmount / 1000000);
                          //let amount = (Number(rawAmount) / 1000000)
