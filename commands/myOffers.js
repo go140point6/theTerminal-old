@@ -114,12 +114,12 @@ module.exports = {
                          embedFields.push({ name: offer.buy[0].NFTokenID, value: amount.toString()})
                      }
                     })
-                    console.log(embedFields)
+                    //console.log(embedFields)
                 }
             })
 
             const editBuyEmbed = new EmbedBuilder()
-
+                console.log(embedFields)
                 .setColor('DarkRed')
                 .setTitle(`Welcome to The Terminal`)
                 //.setAuthor({ name: client.user.username })
