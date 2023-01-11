@@ -3,7 +3,7 @@ async function onInteraction(interaction) {
         const command = interaction.client.commands.get(interaction.commandName);
         await command.execute(interaction);
     } else if (interaction.isButton()) {
-        //console.log(interaction);
+        console.log(interaction);
     } else {
         return;
     }
