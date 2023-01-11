@@ -1,5 +1,5 @@
 async function onMessage(message) {
-    if(message.author.bot) return;
+    //if(message.author.bot) return;
     
     //message.reply("Bingo")
     console.log(message);
