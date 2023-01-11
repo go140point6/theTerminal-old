@@ -84,7 +84,7 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
-        if (i.user.id === interaction.user.id) {
+        if (i.user.id === interaction.user.id && i.customId === 'buy') {
           
             const editEmbed = new EmbedBuilder()
 
