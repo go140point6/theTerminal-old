@@ -117,7 +117,7 @@ module.exports = {
             console.log(collected)
             console.log(reason)
             console.log(interaction)
-            await interaction.reply({ components: [] });
+            await interaction.editReply({ components: [] });
             /*
             const shutdownEmbed = new EmbedBuilder()
 
