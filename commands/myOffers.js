@@ -84,8 +84,8 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
-        console.log(i);
-        console.log(interaction)
+        //console.log(i);
+        //console.log(interaction)
         /*
         if (i.user.id === interaction.user.id) {
           
@@ -117,6 +117,7 @@ module.exports = {
             console.log(collected)
             console.log(reason)
             console.log(interaction)
+            await interaction.reply({ components: [] });
             /*
             const shutdownEmbed = new EmbedBuilder()
 
