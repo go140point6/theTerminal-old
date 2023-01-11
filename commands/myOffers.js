@@ -130,7 +130,7 @@ module.exports = {
                 //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
             
 	        //await i.update({ content: 'A button was clicked!', components: [] });
-            await i.update({ embeds: [editBuyEmbed], components: [] });
+            i.update({ embeds: [editBuyEmbed], components: [] });
             collector.stop('Collector stopped manually');
             }
         })
@@ -149,7 +149,7 @@ module.exports = {
                     //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
                 
                 //await i.update({ content: 'A button was clicked!', components: [] });
-                await i.update({ embeds: [editSellEmbed], components: [] });
+                i.update({ embeds: [editSellEmbed], components: [] });
                 collector.stop('Collector stopped manually');    
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
