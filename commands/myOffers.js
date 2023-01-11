@@ -85,6 +85,7 @@ module.exports = {
 
     collector.on('collect', async i => {
         console.log(i);
+        console.log(interaction)
         /*
         if (i.user.id === interaction.user.id) {
           
