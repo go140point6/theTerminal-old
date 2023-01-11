@@ -11,9 +11,12 @@ var fieldsXrpl = "(id INTEGER PRIMARY KEY AUTOINCREMENT, currency TEXT, issuer T
 var fieldsCrypto = "(id TEXT PRIMARY KEY, symbol TEXT, name TEXT)";
 var sqlXrpl = `CREATE TABLE IF NOT EXISTS ${tableXrpl} ${fieldsXrpl}`;
 var sqlCrypto = `CREATE TABLE IF NOT EXISTS ${tableCrypto} ${fieldsCrypto}`;
-const createTableXrpl = db.prepare(sqlXrpl);
+var dropCrypto = `DROP TABLE ${tableCrypto}`;
+//const createTableXrpl = db.prepare(sqlXrpl);
+const dropTableCrypto = db.prepare(dropCrypto);
 const createTableCrypto = db.prepare(sqlCrypto);
-createTableXrpl.run();
+//createTableXrpl.run();
+dropTableCrypto.run();
 createTableCrypto.run();
 
 async function getTokens() {
@@ -60,10 +63,10 @@ async function getCrypto() {
 };
 
 async function initialDB() {
-    await getTokens();
-    const stmt = db.prepare("SELECT * FROM xrplTokens");
-    var results = stmt.all();
-    console.log(results);
+    //await getTokens();
+    //const stmt = db.prepare("SELECT * FROM xrplTokens");
+    //var results = stmt.all();
+    //console.log(results);
     await getCrypto();
     const stmt2 = db.prepare("SELECT * FROM crypto");
     var results2 = stmt2.all();
