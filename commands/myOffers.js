@@ -84,9 +84,6 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
-        //console.log(i);
-        //console.log(interaction)
-        /*
         if (i.user.id === interaction.user.id) {
           
             const editEmbed = new EmbedBuilder()
@@ -107,18 +104,13 @@ module.exports = {
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
-        */
     }) 
 
     collector.on('end', async (collected, reason) => {
         //console.log(`Collected ${collected.size} items`)
         if (collected.size == 0) {
             //console.log(`It was zero`);
-            console.log(collected)
-            console.log(reason)
-            console.log(interaction)
             await interaction.editReply({ components: [] });
-            /*
             const shutdownEmbed = new EmbedBuilder()
 
             .setColor('DarkRed')
@@ -131,8 +123,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
-            await interaction.update({ embeds: [shutdownEmbed], components: [] });
-            */
+            await interaction.editReply({ embeds: [shutdownEmbed], components: [] });
         } else {
             console.log((`Collected ${collected.size} items`));
         }
