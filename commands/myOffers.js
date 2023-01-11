@@ -109,11 +109,12 @@ module.exports = {
         */
     }) 
 
-    collector.on('end', async collected => {
+    collector.on('end', async (collected, reason) => {
         //console.log(`Collected ${collected.size} items`)
         if (collected.size == 0) {
             //console.log(`It was zero`);
             console.log(collected)
+            console.log(reason)
             /*
             const shutdownEmbed = new EmbedBuilder()
 
