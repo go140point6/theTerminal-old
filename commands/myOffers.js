@@ -113,10 +113,10 @@ module.exports = {
                 */
                 
                 offers.forEach(offer => {
-                    for (var key in offer) {
-                        console.log(offer[key])
-                    }
                     //console.log(offer.buy[0])
+                    Object.entries(offer).forEach(([key, val]) => {
+                        console.log(`${key} ${val}`)
+                    })
                 })
 
                 /*
