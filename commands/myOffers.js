@@ -113,10 +113,11 @@ module.exports = {
                 */
 
                 for (var key in offers) {
-                    //if (offers[key].buy.length !== 0) {
-                    for (var key1 in offers[key]) {
-                        console.log(offers[key][key1])
-                    }
+                    if (offers[key].buy.length !== 0) {
+                        for (var key1 in offers[key]) {
+                            console.log(offers[key][key1])
+                        }
+                    }      
                 }
 
                 /*
