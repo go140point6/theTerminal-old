@@ -47,7 +47,7 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            buyOffers();
+            buyOffers(i);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
           
