@@ -105,7 +105,7 @@ module.exports = {
                 let count = 0;
 
                 offers.forEach(offer => {
-                    If (Object.keys(offer.buy).length !== 0) {
+                    if (Object.keys(offer.buy).length !== 0) {
                         console.log(offer.buy[0])
                     }
                 })
