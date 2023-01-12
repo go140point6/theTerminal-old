@@ -128,7 +128,7 @@ module.exports = {
                             (nftid) => nftid.id === offer.buy[key].NFTokenID
                         )
                         //console.log(offer.buy[key].NFTokenID)
-                        //console.log(findNFTIndex)
+                        console.log(findNFTIndex)
 
                         if (findNFTIndex == -1) {
                             currentOffers.push({
@@ -136,7 +136,7 @@ module.exports = {
                                 "Amount":offer.buy[key].Amount, 
                                 "NFTokenID": offer.buy[key].NFTokenID, 
                                 "OfferID": offer.buy[key].OfferID, 
-                                "Owner": offer.buy[key].OfferID, 
+                                "Owner": offer.buy[key].Owner, 
                                 "Destination": offer.buy[key].Destination, 
                                 "Expiration": offer.buy[key].Expiration
                             })
@@ -146,7 +146,7 @@ module.exports = {
                                 "Amount":offer.buy[key].Amount, 
                                 "NFTokenID": offer.buy[key].NFTokenID, 
                                 "OfferID": offer.buy[key].OfferID, 
-                                "Owner": offer.buy[key].OfferID, 
+                                "Owner": offer.buy[key].Owner, 
                                 "Destination": offer.buy[key].Destination, 
                                 "Expiration": offer.buy[key].Expiration
                             }
@@ -155,9 +155,6 @@ module.exports = {
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
                         //console.log(currentOffers.length)
                         //console.log(currentOffers)
-
-
-                        //console.log(currentOffers.length)
                     })
                 })
 
