@@ -117,7 +117,7 @@ module.exports = {
                     //console.log(offer.buy[0])
                     Object.entries(offer.buy).forEach(([key, val]) => {
                         //console.log(`${key} ${val}`)
-                        //console.log(val)
+                        console.log(val)
                         //console.log(key)
                         //console.log(offer.buy[key])
                         //console.log(offer.buy[key].NFTokenID)
@@ -146,9 +146,7 @@ module.exports = {
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers`);
-                //console.log(currentOffers);
-                console.log(offers)
-
+                //console.log(currentOffers)
 
                 /*
                 let offers = res.data.data.offers;
