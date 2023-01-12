@@ -162,11 +162,11 @@ module.exports = {
 
                 let embedFields = [];
 
-                currentOffers.forEach(offer => {
-                    let rawAmount = (currentOffers.Amount);
+                currentOffers.slice(0,5).forEach(offer => {
+                    let rawAmount = (offer.Amount);
                     let amount = (Number(rawAmount))/1000000;
 
-                    embedFields.push({ name: offer.buy[0].NFTokenID, value: amount.toString() })
+                    embedFields.push({ name: offer.NFTokenID, value: amount.toString() })
                 })
 
                 const editBuyEmbed = new EmbedBuilder()
