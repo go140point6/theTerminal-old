@@ -158,22 +158,47 @@ module.exports = {
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
-                console.log(currentOffers.slice(0,5))
+                //console.log(currentOffers.slice(0,5))
 
                 let embedFields = [];
 
-                currentOffers.slice(0,5).forEach(offer => {
+                currentOffers.slice(0,3).forEach(offer => {
                     let rawAmount = (offer.Amount);
                     let amount = (Number(rawAmount))/1000000;
 
                     embedFields.push({ name: offer.NFTokenID, value: amount.toString() })
                 })
 
+                const row = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId('prev')
+                        .setLabel('Previous')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setDisabled(true),
+                    new ButtonBuilder()
+                        .setCustomId('one')
+                        .setLabel('One')
+                        .setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder()
+                        .setCustomId('two')
+                        .setLabel('Two')
+                        .setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder()
+                        .setCustomId('three')
+                        .setLabel('Three')
+                        .setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder()
+                        .setCustomId('next')
+                        .setLabel('Next')
+                        .setStyle(ButtonStyle.Secondary)
+                );
+
                 const editBuyEmbed = new EmbedBuilder()
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     //.setAuthor({ name: client.user.username })
-                    .setDescription(`There are ${currentOffers.length} BUY offers on ${address}, counting ONLY the highest bids. Showing 5.`)
+                    .setDescription(`There are ${currentOffers.length} BUY offers on ${address}, counting ONLY the highest bids. Showing 3.`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(embedFields)
                     //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -181,7 +206,7 @@ module.exports = {
                     //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
                 //await i.update({ content: 'A button was clicked!', components: [] });
-                i.update({ embeds: [editBuyEmbed], components: [] });
+                i.update({ embeds: [editBuyEmbed], components: [row] });
                 collector.stop('Collector stopped manually');
 
                 /*
