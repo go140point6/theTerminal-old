@@ -120,15 +120,16 @@ module.exports = {
                         //console.log(val)
                         //console.log(key)
                         //console.log(offer.buy[key])
-                        console.log(offer.buy[key].NFTokenID)
-                        console.log(key)
-                        console.log(offer.buy[key].Amount)
+                        //console.log(offer.buy[key].NFTokenID)
+                        //console.log(key)
+                        //console.log(offer.buy[key].Amount)
                         currentOffers.push(offer.buy[key].NFTokenID, key, offer.buy[key].Amount)
                         console.log(currentOffers.length)
                     })
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers`);
+                console.log(currentOffers);
 
                 /*
                 for (var key in offers) {
