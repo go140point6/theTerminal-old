@@ -146,7 +146,9 @@ module.exports = {
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers`);
-                console.log(currentOffers);
+                //console.log(currentOffers);
+                console.log(offers.buy)
+
 
                 /*
                 let offers = res.data.data.offers;
