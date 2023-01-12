@@ -104,13 +104,17 @@ module.exports = {
                 //let embedFields = [];
                 let count = 0;
 
-                
+                /*
                 offers.forEach(offer => {
                     if (Object.keys(offer.buy).length !== 0) {
                         console.log(offer.buy[1])
                     }
                 })
+                */
                 
+                offers.forEach(offer => {
+                    console.log(offer.buy[0])
+                })
 
                 /*
                 for (var key in offers) {
