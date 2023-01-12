@@ -36,7 +36,7 @@ module.exports = {
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
             .setTimestamp()
-            .setFooter({ text: `Viewing offers for ${address}` });
+            .setFooter({ text: `${address}` });
 
     await interaction.reply({ embeds: [initialEmbed], components: [row] });
     console.log(interaction.user.id);
@@ -61,7 +61,7 @@ module.exports = {
                     //.addFields(embedFields)
                     //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                     .setTimestamp()
-                    .setFooter({ text: `Viewing offers for ${address}` });
+                    .setFooter({ text: `${address}` });
                 
                 //await i.update({ content: 'A button was clicked!', components: [] });
                 i.update({ embeds: [editSellEmbed], components: [] });
@@ -198,12 +198,12 @@ module.exports = {
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     //.setAuthor({ name: client.user.username })
-                    .setDescription(`There are ${currentOffers.length} BUY offers on ${address}, counting ONLY the highest bids. Showing 3.`)
+                    .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(embedFields)
-                    //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                    .setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                     .setTimestamp()
-                    .setFooter({ text: `Viewing offers for ${address}` });
+                    .setFooter({ text: `${address}` });
         
                 //await i.update({ content: 'A button was clicked!', components: [] });
                 i.update({ embeds: [editBuyEmbed], components: [row] });
