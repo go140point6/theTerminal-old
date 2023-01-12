@@ -107,7 +107,7 @@ module.exports = {
                 
                 offers.forEach(offer => {
                     if (Object.keys(offer.buy).length !== 0) {
-                        console.log(offer.buy[0])
+                        console.log(offer.buy[1])
                     }
                 })
                 
