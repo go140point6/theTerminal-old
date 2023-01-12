@@ -130,7 +130,7 @@ module.exports = {
                         //console.log(findNFTIndex)
                         currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
                         console.log(currentOffers.length)
-                        const findNFTIndex = currentOffers(
+                        const findNFTIndex = currentOffers.findIndex(
                             (nftid) => currentOffer.id === offer.buy[key].NFTTokenID
                         )
                         console.log(findNFTIndex)
