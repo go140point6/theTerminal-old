@@ -2,6 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 const axios = require('axios');
 const client = require('../index');
 
+const address = interaction.options.getString("address", true);
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
@@ -87,7 +89,6 @@ module.exports = {
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
-            var address = interaction.options.getString("address", true);
             console.log('Address to check: ' + address);
             buyOffers();
 
