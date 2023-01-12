@@ -116,9 +116,10 @@ module.exports = {
                     //console.log(offer.buy[0])
                     Object.entries(offer.buy).forEach(([key, val]) => {
                         //console.log(`${key} ${val}`)
-                        console.log(val.NFTokenID)
-                        console.log(val.Amount)
-                        console.log(val.Flags)
+                        console.log(val)
+                        console.log(key)
+                        
+                        
                     })
                 })
 
