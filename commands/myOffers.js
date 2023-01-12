@@ -118,8 +118,10 @@ module.exports = {
                         //console.log(`${key} ${val}`)
                         //console.log(val)
                         //console.log(key)
-                        console.log(offer.buy[key])
-                        
+                        //console.log(offer.buy[key])
+                        console.log(offer.buy[key].NFTokenID)
+                        console.log(offer.buy[key].Flags)
+                        console.log(offer.buy[key].Amount)
                     })
                 })
 
