@@ -101,8 +101,9 @@ module.exports = {
                 console.log(res.data.data.offers.length)
 
                 let offers = res.data.data.offers;
+                let currentOffers = [];
                 //let embedFields = [];
-                let count = 0;
+                //let count = 0;
 
                 /*
                 offers.forEach(offer => {
@@ -122,8 +123,12 @@ module.exports = {
                         console.log(offer.buy[key].NFTokenID)
                         console.log(key)
                         console.log(offer.buy[key].Amount)
+                        currentOffers.push(offer.buy[key].NFTokenID, key, offer.buy[key].Amount)
+                        console.log(currentOffers.length)
                     })
                 })
+
+                console.log(`There are ${currentOffers.length} BUY offers`);
 
                 /*
                 for (var key in offers) {
