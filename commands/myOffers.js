@@ -114,9 +114,11 @@ module.exports = {
 
                 for (var key in offers) {
                     //for (var key1 in offers[key]) {
-                        if (offers[key].buy !== 0) {
+                        if (offers[key].buy.length !== 0) {
                             //console.log(offers[key].buy)
                             console.log("true")
+                        } else {
+                            console.log("false")
                         }
                     //}
                 }
