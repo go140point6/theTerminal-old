@@ -115,7 +115,7 @@ module.exports = {
                 for (var key in offers) {
                     if (offers[key].buy.length !== 0) {
                         for (var key1 in offers[key]) {
-                            for (var key2 in offers[key1]) {
+                            for (var key2 in offers[key][key1]) {
                             console.log(offers[key][key1].NFTokenID)
                             console.log(offers[key][key1].Amount)
                             }
