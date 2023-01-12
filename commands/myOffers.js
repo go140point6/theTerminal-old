@@ -87,9 +87,9 @@ module.exports = {
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
-            const address = interaction.options.getString("address", true);
+            var address = interaction.options.getString("address", true);
             console.log('Address to check: ' + address);
-            buyOffers(address);
+            buyOffers();
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
           
