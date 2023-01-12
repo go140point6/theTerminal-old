@@ -159,7 +159,7 @@ module.exports = {
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
-                console.log(currentOffers)
+                //console.log(currentOffers)
 
                 /*
                 let offers = res.data.data.offers;
