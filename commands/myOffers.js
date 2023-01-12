@@ -130,7 +130,12 @@ module.exports = {
                         console.log(offer.buy[key].NFTokenID)
                         console.log(findNFTIndex)
 
-                        currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
+                        if (findNFTIndex == -1) {
+                            currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
+                        } else {
+                            currentOffers[findNFTIndex] = { "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount }
+                        }
+                        //currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
                         //console.log(currentOffers.length)
                         //console.log(currentOffers)
