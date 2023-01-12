@@ -127,8 +127,8 @@ module.exports = {
                         const findNFTIndex = currentOffers.findIndex(
                             (nftid) => nftid.id === offer.buy[key].NFTokenID
                         )
-                        console.log(offer.buy[key].NFTokenID)
-                        console.log(findNFTIndex)
+                        //console.log(offer.buy[key].NFTokenID)
+                        //console.log(findNFTIndex)
 
                         if (findNFTIndex == -1) {
                             currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
@@ -146,7 +146,7 @@ module.exports = {
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers`);
-                //console.log(currentOffers);
+                console.log(currentOffers);
 
                 /*
                 let offers = res.data.data.offers;
