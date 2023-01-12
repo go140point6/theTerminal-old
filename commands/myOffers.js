@@ -100,7 +100,7 @@ module.exports = {
                 //console.log(res.data.data.offers)
                 console.log(res.data.data.offers.length)
 
-                let offers = res.data.data.offers.buy;
+                let offers = res.data.data.offers;
                 //let embedFields = [];
                 let count = 0;
 
