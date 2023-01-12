@@ -128,7 +128,7 @@ module.exports = {
                     })
                 })
 
-                //console.log(`There are ${currentOffers.length} BUY offers`);
+                console.log(`There are ${currentOffers.length} BUY offers`);
                 console.log(currentOffers);
 
                 /*
