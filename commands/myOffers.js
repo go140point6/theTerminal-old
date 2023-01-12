@@ -102,7 +102,7 @@ module.exports = {
 
                 let offers = res.data.data.offers;
                 let currentOffers = [];
-                //let embedFields = [];
+                let embedFields = [];
                 //let count = 0;
 
                 /*
@@ -123,35 +123,13 @@ module.exports = {
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(key)
                         //console.log(offer.buy[key].Amount)
-                        currentOffers.push(offer.buy[key].NFTokenID, key, offer.buy[key].Amount)
-                        console.log(currentOffers.length)
+                        currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
+                        //console.log(currentOffers.length)
                     })
                 })
 
-                console.log(`There are ${currentOffers.length} BUY offers`);
+                //console.log(`There are ${currentOffers.length} BUY offers`);
                 console.log(currentOffers);
-
-                /*
-                for (var key in offers) {
-                    if (offers[key].buy.length !== 0) {
-                        for (var key1 in offers[key]) {
-                            console.log(offers[key][key1])
-                        }
-                    }      
-                }
-                */
-
-                /*
-                    //for (var key1 in offers[key]) {
-                        //if (offers[key].buy.length !== 0) {
-                            //console.log(offers[key].buy)
-                            console.log("true")
-                        //} else {
-                        //    console.log("false")
-                        }
-                    //}
-                }
-                */
 
                 /*
                 let offers = res.data.data.offers;
