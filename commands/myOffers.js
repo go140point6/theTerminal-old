@@ -112,6 +112,7 @@ module.exports = {
                 })
                 */
 
+                /*
                 for (var key in offers) {
                     //for (var key1 in offers[key]) {
                         if (offers[key].buy.length !== 0) {
@@ -122,6 +123,7 @@ module.exports = {
                         }
                     //}
                 }
+                */
 
                 /*
                 let offers = res.data.data.offers;
