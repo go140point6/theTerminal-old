@@ -95,8 +95,6 @@ module.exports = {
     });
 
     async function buyOffers(i) {
-        console.log(i);
-        /*
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
                 let offers = res.data.data.offers;
@@ -127,7 +125,7 @@ module.exports = {
             collector.stop('Collector stopped manually');
             }
         })
-        */
     };
+    
     }
 };
