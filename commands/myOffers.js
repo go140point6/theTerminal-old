@@ -98,9 +98,17 @@ module.exports = {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
                 console.log(res.data.data.offers)
-                console.log(res.data.length)
-                console.log(res.data.data.length)
                 console.log(res.data.data.offers.length)
+
+                let offers = res.data.data.offers;
+                //let embedFields = [];
+                let count = 0;
+
+                offers.forEach(offer => {
+                    If (Object.keys(offer.buy).length !== 0) {
+                        console.log(offer.buy[0])
+                    }
+                })
                 /*
                 let offers = res.data.data.offers;
                 let embedFields = [];
