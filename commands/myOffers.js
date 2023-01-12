@@ -114,7 +114,7 @@ module.exports = {
 
                 for (var key in offers) {
                     //for (var key1 in offers[key]) {
-                        console.log(offers[key])
+                        console.log(offers[key].buy)
                     //}
                 }
 
