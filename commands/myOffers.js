@@ -131,9 +131,25 @@ module.exports = {
                         //console.log(findNFTIndex)
 
                         if (findNFTIndex == -1) {
-                            currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
+                            currentOffers.push({
+                                "offerNo": key, 
+                                "Amount":offer.buy[key].Amount, 
+                                "NFTokenID": offer.buy[key].NFTokenID, 
+                                "OfferID": offer.buy[key].OfferID, 
+                                "Owner": offer.buy[key].OfferID, 
+                                "Destination": offer.buy[key].Destination, 
+                                "Expiration": offer.buy[key].Expiration
+                            })
                         } else {
-                            currentOffers[findNFTIndex] = { "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount }
+                            currentOffers[findNFTIndex] = {
+                                "offerNo": key, 
+                                "Amount":offer.buy[key].Amount, 
+                                "NFTokenID": offer.buy[key].NFTokenID, 
+                                "OfferID": offer.buy[key].OfferID, 
+                                "Owner": offer.buy[key].OfferID, 
+                                "Destination": offer.buy[key].Destination, 
+                                "Expiration": offer.buy[key].Expiration
+                            }
                         }
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
@@ -145,8 +161,8 @@ module.exports = {
                     })
                 })
 
-                console.log(`There are ${currentOffers.length} BUY offers`);
-                //console.log(currentOffers)
+                console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
+                console.log(currentOffers)
 
                 /*
                 let offers = res.data.data.offers;
