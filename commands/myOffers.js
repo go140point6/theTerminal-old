@@ -113,7 +113,9 @@ module.exports = {
                 */
 
                 for (var key in offers) {
-                    console.log(offers[key].buy)
+                    if (offers[key].buy.length !== 0) {
+                        console.log(offers[key].buy)
+                    }
                 }
 
                 /*
