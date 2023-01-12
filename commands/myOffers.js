@@ -147,7 +147,7 @@ module.exports = {
 
                 console.log(`There are ${currentOffers.length} BUY offers`);
                 //console.log(currentOffers);
-                console.log(offers.buy)
+                console.log(offers)
 
 
                 /*
