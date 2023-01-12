@@ -89,7 +89,7 @@ module.exports = {
             
             const address = interaction.options.getString("address", true);
             console.log('Address to check: ' + address);
-            buyOffers();
+            buyOffers(address);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
           
