@@ -100,7 +100,7 @@ module.exports = {
                 //console.log(res.data.data.offers)
                 console.log(res.data.data.offers.length)
 
-                let offers = res.data.data.offers;
+                let offers = res.data.data.offers.buy;
                 //let embedFields = [];
                 let count = 0;
 
@@ -114,7 +114,7 @@ module.exports = {
                 
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
-                    Object.entries(offer.buy).forEach(([key, val]) => {
+                    Object.entries(offer).forEach(([key, val]) => {
                         console.log(`${key} ${val}`)
                     })
                 })
