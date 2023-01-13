@@ -48,7 +48,7 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            const getIPFS = hexToString();
+            const getIPFS = hexToString(hexToString);
             console.log(getIPFS)
             buyOffers(i);
 
