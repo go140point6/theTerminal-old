@@ -48,8 +48,8 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            hexToString();
-            console.log(hexToString);
+            hexToString(hexToString);
+            console.log(hexToString)
             buyOffers(i);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
