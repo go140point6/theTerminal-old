@@ -1,3 +1,4 @@
+/*
 var hexToString = function () {
     const convert = (from, to) => str => Buffer.from(str, from).toString(to)
     const hexToUtf8 = convert('hex', 'utf8')
@@ -7,4 +8,8 @@ var hexToString = function () {
 };
 
 exports.hexToString = hexToString;
+*/
 
+//function hexToUtf8() {
+
+//}
