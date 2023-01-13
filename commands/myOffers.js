@@ -109,8 +109,9 @@ module.exports = {
             }
         })
 
-        const getString = hexToUtf8(`${URI}`)
-        console.log(getString);
+        console.log(URI)
+        //const getString = hexToUtf8()
+        //console.log(getString);
         //const getString = hexToUtf8()
     }
     
