@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
+const { hexToString } = require('./utils/hexToString');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -47,7 +48,7 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            getIPFS();
+            hexToString();
             buyOffers(i);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
@@ -95,6 +96,7 @@ module.exports = {
         }
     });
 
+    /*
     async function getIPFS() {
         const convert = (from, to) => str => Buffer.from(str, from).toString(to)
         const hexToUtf8 = convert('hex', 'utf8')
@@ -102,6 +104,7 @@ module.exports = {
         const getString = hexToUtf8('516D6232585954637A66444A356E59753555746679517679794C3770524463727A4D513667536F35356233487841')
         console.log(getString);
     }
+    */
 
     async function buyOffers(i) {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
