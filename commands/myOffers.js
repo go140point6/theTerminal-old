@@ -49,7 +49,7 @@ module.exports = {
             
             console.log('Address to check: ' + address);
             const IPFS = getIPFS();
-            console.log(IPFS)
+            //console.log(IPFS) <-- Promise Pending
             buyOffers(i);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
@@ -109,7 +109,8 @@ module.exports = {
             }
         })
 
-        const getString = hexToUtf8('516D6232585954637A66444A356E59753555746679517679794C3770524463727A4D513667536F35356233487841')
+        const getString = hexToUtf8(URI)
+        console.log(getString);
         //const getString = hexToUtf8()
     }
     
