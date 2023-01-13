@@ -98,13 +98,14 @@ module.exports = {
     });
 
     async function getIPFS() {
+        let URI;
         const convert = (from, to) => str => Buffer.from(str, from).toString(to)
         const hexToUtf8 = convert('hex', 'utf8')
 
         //await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/nft/00081388C182B4F213B82CCFA4C6F59AD76F0AFCFBDF04D59E152903000004A8`).then(res => {
             if(res.data) {
-                const URI = res.data.data.nft.URI;
+                 URI = res.data.data.nft.URI;
                 console.log(URI);
             }
         })
