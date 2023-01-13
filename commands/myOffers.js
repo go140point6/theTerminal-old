@@ -48,8 +48,8 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            const getIPFS = hexToString();
-            console.log(getIPFS)
+            const IPFS = getIPFS();
+            console.log(IPFS)
             buyOffers(i);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
