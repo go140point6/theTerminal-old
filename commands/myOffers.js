@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
-const { hexToString } = require('./utils/hexToString');
+const { hexToString } = require('../utils/hexToString');
 
 module.exports = {
     data: new SlashCommandBuilder()
