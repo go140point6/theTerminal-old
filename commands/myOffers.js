@@ -47,6 +47,7 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
+            getIPFS();
             buyOffers(i);
 
          } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
@@ -93,6 +94,14 @@ module.exports = {
             console.log((`Collected ${collected.size} items`));
         }
     });
+
+    async function getIPFS() {
+        const convert = (from, to) => str => Buffer.from(str, from).toString(to)
+        const hexToUtf8 = convert('hex', 'utf8')
+
+        const getString = hexToUtf8('516D6232585954637A66444A356E59753555746679517679794C3770524463727A4D513667536F35356233487841')
+        console.log(getString);
+    }
 
     async function buyOffers(i) {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
@@ -201,7 +210,7 @@ module.exports = {
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields(embedFields)
-                    .setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                    //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
         
