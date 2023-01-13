@@ -48,7 +48,7 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            //const getIPFS = hexToString();
+            const getIPFS = hexToString();
             console.log(getIPFS)
             buyOffers(i);
 
@@ -97,7 +97,7 @@ module.exports = {
         }
     });
 
-        async function getIPFS() {
+    async function getIPFS() {
         const convert = (from, to) => str => Buffer.from(str, from).toString(to)
         const hexToUtf8 = convert('hex', 'utf8')
 
