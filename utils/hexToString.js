@@ -5,5 +5,5 @@ var hexToString = function () {
     hexToUtf8('516D6232585954637A66444A356E59753555746679517679794C3770524463727A4D513667536F35356233487841')
 };
 
-exports.hexToString = this.hexToString;
+exports.hexToString = hexToString;
 
