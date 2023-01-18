@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
+const xrpl = require("xrpl");
 //const { hexToString } = require('../utils/hexToString');
 
 module.exports = {
@@ -98,6 +99,12 @@ module.exports = {
     });
 
     async function getIPFS() {
+        const client = new xrpl.Client('wss://xrplcluster.com');
+        await client.connect();
+    }
+
+    /*
+    async function getIPFS() {
         let URI;
         const convert = (from, to) => str => Buffer.from(str, from).toString(to)
         const hexToUtf8 = convert('hex', 'utf8')
@@ -120,7 +127,8 @@ module.exports = {
 
         //const getString = hexToUtf8()
     }
-    
+    */
+
     async function buyOffers(i) {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
