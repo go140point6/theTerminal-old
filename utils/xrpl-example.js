@@ -4,9 +4,8 @@ async function main() {
   await client.connect()
 
   const response = await client.request({
-    "command": "account_info",
+    "command": "account_nfts",
     "account": "rM7kvwoahaMN4zrF5fd5TuPoxkJJZCB3a8",
-    "ledger_index": "validated"
   })
   console.log(response)
 
