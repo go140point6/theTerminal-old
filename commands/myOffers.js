@@ -103,7 +103,10 @@ module.exports = {
         const hexToUtf8 = convert('hex', 'utf8')
 
         //await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
-        await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/nft/00081388C182B4F213B82CCFA4C6F59AD76F0AFCFBDF04D59E152903000004A8`).then(res => {
+        await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/nft/00081388C182B4F213B82CCFA4C6F59AD76F0AFCFBDF04D59E152903000004A8`).then(res => { // xShroom
+        //await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/nft/000819648C08F42352F2CDD48D66CB6639E56C79CE0A4D619E6EED4D0000004A`).then(res => { // XLION
+        //await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/nft/000817024EC543906E622D5E959A014444D88DCB64EEDC4395965FA600000214`).then(res => { // Bearable Bull
+        //await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/nft/000A1388DBB936CAD420E20BBA95A46AB6EC7921C3F162CA5C4185C400000329`).then(res => { // Combat Kanga
             if(res.data) {
                  URI = res.data.data.nft.URI;
                 console.log(URI);
@@ -112,6 +115,9 @@ module.exports = {
 
         const getString = hexToUtf8(URI)
         console.log(getString);
+
+        
+
         //const getString = hexToUtf8()
     }
     
