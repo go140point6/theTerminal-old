@@ -284,7 +284,7 @@ module.exports = {
                     //.addFields({ name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
-                    //.setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
+                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
         
