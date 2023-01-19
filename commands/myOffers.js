@@ -146,8 +146,9 @@ module.exports = {
                     }
                 })
                 */
-                
-                let numOfOffer = 1;
+
+                let totalNetOffers = currentOffers.length
+                console.log(totalNetOffers);
 
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
@@ -168,7 +169,6 @@ module.exports = {
 
                         if (findNFTIndex == -1) {
                             currentOffers.push({
-                                "numOfOffer": numOfOffer,
                                 "offerNo": key, 
                                 "Amount":offer.buy[key].Amount, 
                                 "NFTokenID": offer.buy[key].NFTokenID, 
@@ -179,7 +179,6 @@ module.exports = {
                             })
                         } else {
                             currentOffers[findNFTIndex] = {
-                                "numOfOffer": numOfOffer,
                                 "offerNo": key, 
                                 "Amount":offer.buy[key].Amount, 
                                 "NFTokenID": offer.buy[key].NFTokenID, 
@@ -194,8 +193,8 @@ module.exports = {
                         //console.log(currentOffers.length)
                         //console.log(currentOffers)
                     })
-                    numOfOffer++
-                    console.log(numOfOffer)
+                    totalNetOffers = currentOffers.length
+                    console.log(totalNetOffers)
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
