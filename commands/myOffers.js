@@ -167,6 +167,7 @@ module.exports = {
                         //console.log(findNFTIndex)
 
                         if (findNFTIndex == -1) {
+                            console.log(numOfOffer)
                             currentOffers.push({
                                 "numOfOffer": numOfOffer,
                                 "offerNo": key, 
@@ -178,7 +179,9 @@ module.exports = {
                                 "Expiration": offer.buy[key].Expiration
                             })
                             numOfOffer++
+                            console.log(numOfOffer)
                         } else {
+                            console.log(numOfOffer)
                             currentOffers[findNFTIndex] = {
                                 "numOfOffer": numOfOffer,
                                 "offerNo": key, 
@@ -190,6 +193,7 @@ module.exports = {
                                 "Expiration": offer.buy[key].Expiration
                             }
                             numOfOffer++
+                            console.log(numOfOffer)
                         }
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
