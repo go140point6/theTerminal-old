@@ -82,7 +82,7 @@ module.exports = {
                 console.log('User hit next');
                 //const IPFS = getIPFS();
                 //console.log(IPFS) <-- Promise Pending
-                $currentIndex++
+                currentIndex++
                 console.log(currentIndex);
                 nextOffer(i);
 
