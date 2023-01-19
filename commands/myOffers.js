@@ -260,7 +260,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setLabel('More Info')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://xrp.cafe/nft/${offer.buy[0].NFTokenID}`),
+                        .setURL(`https://xrp.cafe/nft/${currentOffers[0].NFTokenID}`),
                     new ButtonBuilder()
                         .setCustomId('next')
                         .setLabel('Next')
