@@ -152,7 +152,7 @@ module.exports = {
         console.log(typeof(lastIndexObj))
         console.log(typeof(currentIndex))
 
-        if (lastIndexObj == currentIndex) {
+        if (lastIndexObj === currentIndex) {
             let disable = "true"
         } else {
             let disable = "false"
