@@ -201,7 +201,7 @@ module.exports = {
 
                 const iterator = currentOffers2.keys();
 
-                for (const keys of iterator) {
+                for (const keys2 of iterator) {
                     console.log(key2);
                     currentOffers2[key2].index = key2
                 }
