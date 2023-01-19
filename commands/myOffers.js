@@ -286,7 +286,8 @@ module.exports = {
                     //.addFields({ name: `2`, value: '2', inline: false })
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
-                    .setFooter({ text: `${address}` });
+                    //.setFooter({ text: `${address}` });
+                    .setFooter("\u3000".repeat(10));
         
                 //await i.update({ content: 'A button was clicked!', components: [] });
                 i.update({ embeds: [editBuyEmbed], components: [row] });
