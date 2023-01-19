@@ -197,6 +197,8 @@ module.exports = {
 
                 const currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
 
+                console.log(currentOffers2);
+
                 /*
                 const iterator = currentOffers2.keys();
 
@@ -204,7 +206,7 @@ module.exports = {
                     console.log(key2);
                 }
                 */
-               
+
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
                 console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
