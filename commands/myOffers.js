@@ -165,7 +165,7 @@ module.exports = {
                         const iterator = currentOffers.keys();
 
                         for (const key2 of iterator) {
-                            console.log(keys);
+                            console.log(key2);
                         }
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(findNFTIndex)
