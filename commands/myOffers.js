@@ -149,10 +149,12 @@ module.exports = {
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
         if (lastIndexObj == currentIndex) {
-            let disable = true
+            let disable = "true"
         } else {
-            let disable = false
+            let disable = "false"
         }
+
+        console.log(disable);    
 
         const row = new ActionRowBuilder()
         .addComponents(
