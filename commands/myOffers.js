@@ -149,11 +149,6 @@ module.exports = {
 
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
-                    const iterator = currentOffers.keys();
-
-                    for (const key2 of iterator) {
-                        console.log(key2);
-                    }
 
                     Object.entries(offer.buy).forEach(([key, val]) => {
                         //console.log(`${key} ${val}`)
@@ -199,6 +194,12 @@ module.exports = {
                         //console.log(currentOffers)
                     })
                 })
+
+                const iterator = currentOffers.keys();
+
+                for (const key2 of iterator) {
+                    console.log(key2);
+                }
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
 
