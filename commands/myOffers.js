@@ -169,7 +169,7 @@ module.exports = {
                 .setCustomId('next')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(disable),
+                .setDisabled(`${disable}`),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
