@@ -278,9 +278,9 @@ module.exports = {
                     .setThumbnail(client.user.avatarURL())
                     .addFields(
                         { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
-                        { name: "", value: "", inline: true },
-                        { name: "", value: "", inline: true },
-                        )
+                        { name: '\u200B', value: '\u200B' },
+                        { name: '\u200B', value: '\u200B' },
+                    )
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
