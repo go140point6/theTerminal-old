@@ -197,8 +197,16 @@ module.exports = {
 
                 const currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
 
-                console.log(currentOffers2);
+                //console.log(currentOffers2);
 
+                const iterator = currentOffers2.keys();
+
+                for (const keys of iterator) {
+                    console.log(key2);
+                    currentOffers2[key2].index = key2
+                }
+
+                console.log(currentOffers2);
                 /*
                 const iterator = currentOffers2.keys();
 
