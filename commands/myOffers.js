@@ -276,13 +276,11 @@ module.exports = {
                     //.setAuthor({ name: client.user.username })
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
-                    /*
                     .addFields(
                         { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
-                        { name: '\u200B', value: '\u200B' },
-                        { name: '\u200B', value: '\u200B' },
+                        { name: '1', value: '1' },
+                        { name: '2', value: '2' },
                     )
-                    */
                     //.addFields({ name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
