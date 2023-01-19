@@ -291,7 +291,7 @@ module.exports = {
                 lastIndexObj = (currentOffers2.length - 1);
                 console.log(lastIndexObj);
 
-                $currentIndex = 0;
+                currentIndex = 0;
 
                 rawAmount = currentOffers2.at($currentIndex).Amount;
                 console.log(rawAmount);
