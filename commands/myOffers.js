@@ -237,7 +237,7 @@ module.exports = {
                 let lastIndexObj = (currentOffers.length - 1);
                 console.log(lastIndexObj);
 
-                let rawAmount = currentOffers.at(0);
+                let rawAmount = currentOffers.at(0).Amount;
                 console.log(rawAmount);
                 let amount = (Number(rawAmount))/1000000;
                 console.log(amount);
@@ -276,7 +276,7 @@ module.exports = {
                     //.setAuthor({ name: client.user.username })
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
-                    .addFields({ name: `Showing offer ${currentOffers[0].offerNo}`, value: amount.toString(), inline: true })
+                    .addFields({ name: `Showing offer ${currentOffers[0].key}`, value: amount.toString(), inline: true })
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[0].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
