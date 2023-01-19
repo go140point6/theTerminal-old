@@ -167,7 +167,6 @@ module.exports = {
                         //console.log(findNFTIndex)
 
                         if (findNFTIndex == -1) {
-                            console.log(numOfOffer)
                             currentOffers.push({
                                 "numOfOffer": numOfOffer,
                                 "offerNo": key, 
@@ -178,10 +177,7 @@ module.exports = {
                                 "Destination": offer.buy[key].Destination, 
                                 "Expiration": offer.buy[key].Expiration
                             })
-                            numOfOffer++
-                            console.log(numOfOffer)
                         } else {
-                            console.log(numOfOffer)
                             currentOffers[findNFTIndex] = {
                                 "numOfOffer": numOfOffer,
                                 "offerNo": key, 
@@ -192,14 +188,14 @@ module.exports = {
                                 "Destination": offer.buy[key].Destination, 
                                 "Expiration": offer.buy[key].Expiration
                             }
-                            numOfOffer++
-                            console.log(numOfOffer)
                         }
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
                         //console.log(currentOffers.length)
                         //console.log(currentOffers)
                     })
+                    numOfOffer++
+                    console.log(numOfOffer)
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
