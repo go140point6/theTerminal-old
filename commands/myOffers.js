@@ -194,7 +194,7 @@ module.exports = {
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
 
-                currentOffers.forEach(function (Value, i) {
+                currentOffers.forEach(function (value, i) {
                     console.log('%d: %s', i, value);
                 });
 
