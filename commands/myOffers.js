@@ -49,7 +49,7 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
             
             console.log('Address to check: ' + address);
-            const IPFS = getIPFS();
+            //const IPFS = getIPFS();
             //console.log(IPFS) <-- Promise Pending
             buyOffers(i);
 
@@ -193,6 +193,11 @@ module.exports = {
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
+
+                currentOffers.forEach(function (Value, i) {
+                    console.log('%d: %s', i, value);
+                });
+
                 //console.log(currentOffers.slice(0,5))
 
                 //let embedFields = [];
