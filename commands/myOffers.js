@@ -293,7 +293,7 @@ module.exports = {
 
                 currentIndex = 0;
 
-                rawAmount = currentOffers2.at($currentIndex).Amount;
+                rawAmount = currentOffers2.at(currentIndex).Amount;
                 console.log(rawAmount);
                 amount = (Number(rawAmount))/1000000;
                 console.log(amount);
