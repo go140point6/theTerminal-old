@@ -185,10 +185,10 @@ module.exports = {
                                 "Expiration": offer.buy[key].Expiration
                             }
                         }
-                        currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
+                        //currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
-                        console.log(currentOffers.length)
-                        console.log(currentOffers)
+                        //console.log(currentOffers.length)
+                        //console.log(currentOffers)
                     })
                 })
 
