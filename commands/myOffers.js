@@ -161,6 +161,9 @@ module.exports = {
                         const findNFTIndex = currentOffers.findIndex(
                             (nftid) => nftid.NFTokenID === offer.buy[key].NFTokenID
                         )
+
+                        const key = currentOffers.keys();
+                        console.log(key)
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(findNFTIndex)
 
@@ -194,9 +197,12 @@ module.exports = {
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
 
-                currentOffers.forEach(function (value, i) {
-                    console.log(i);
-                });
+                //const currentOffers2 = currentOffers;
+
+                //currentOffers.forEach(function (value, i) {
+                    //console.log(i);
+                    
+                //});
 
                 //console.log(currentOffers.slice(0,5))
 
