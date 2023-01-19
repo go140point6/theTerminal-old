@@ -162,8 +162,8 @@ module.exports = {
                             (nftid) => nftid.NFTokenID === offer.buy[key].NFTokenID
                         )
 
-                        const key = currentOffers.keys();
-                        console.log(key)
+                        const key2 = currentOffers.keys();
+                        console.log(key2)
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(findNFTIndex)
 
