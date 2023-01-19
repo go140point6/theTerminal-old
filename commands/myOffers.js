@@ -149,6 +149,12 @@ module.exports = {
 
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
+                    const iterator = currentOffers.keys();
+
+                    for (const key2 of iterator) {
+                        console.log(key2);
+                    }
+
                     Object.entries(offer.buy).forEach(([key, val]) => {
                         //console.log(`${key} ${val}`)
                         //console.log(val)
@@ -162,11 +168,7 @@ module.exports = {
                             (nftid) => nftid.NFTokenID === offer.buy[key].NFTokenID
                         )
 
-                        const iterator = currentOffers.keys();
 
-                        for (const key2 of iterator) {
-                            console.log(key2);
-                        }
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(findNFTIndex)
 
