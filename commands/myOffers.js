@@ -188,22 +188,25 @@ module.exports = {
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "offerNo": key, "amount": offer.buy[key].Amount })
                         //currentOffers.push({ "id": offer.buy[key].NFTokenID, "amount": offer.buy[key].Amount })
                         //console.log(currentOffers.length)
-                        console.log(currentOffers)
+                        //console.log(currentOffers)
                     })
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
                 //console.log(currentOffers.slice(0,5))
 
-                let embedFields = [];
+                //let embedFields = [];
 
+                /*
                 currentOffers.slice(0,3).forEach(offer => {
                     let rawAmount = (offer.Amount);
                     let amount = (Number(rawAmount))/1000000;
 
                     embedFields.push({ name: offer.NFTokenID, value: amount.toString(), inline: true })
                 })
+                */
 
+                /*
                 const row = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
@@ -228,6 +231,42 @@ module.exports = {
                         .setLabel('Next')
                         .setStyle(ButtonStyle.Secondary)
                 );
+                */
+
+                console.log(currentOffers.length);
+                let lastIndexObj = (currentOffers.length - 1);
+                console.log(lastIndexObj);
+
+                let rawAmount = currentOffers.at(indexArray);
+                let amount = (Number(rawAmount))/1000000;
+
+                /*
+                while (indexArray < currentOffers.length) {
+                    let rawAmount = currentOffers.at(indexArray);
+                    let amount = (Number(rawAmount))/1000000;
+
+                    embedFields.push({ name: `Showing offer ${indexArray}` , value: amount.toString(), inline: true })
+                    indexArray++
+                }
+                */
+
+                const row = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId('prev')
+                        .setLabel('Previous')
+                        .setStyle(ButtonStyle.Primary)
+                        .setDisabled(true),
+                    new ButtonBuilder()
+                        .setLabel('More Info')
+                        .setStyle(ButtonStyle.Link)
+                        .setURL(`https://xrp.cafe/nft/${offer.buy[0].NFTokenID}`),
+                    new ButtonBuilder()
+                        .setCustomId('next')
+                        .setLabel('Next')
+                        .setStyle(ButtonStyle.Primary)
+                        .setDisabled(false),
+                );                
 
                 const editBuyEmbed = new EmbedBuilder()
                     .setColor('DarkRed')
@@ -235,8 +274,8 @@ module.exports = {
                     //.setAuthor({ name: client.user.username })
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
-                    .addFields(embedFields)
-                    //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                    .addFields({ name: `Showing offer ${currentOffers[0]}`, value: amount.toString() })
+                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[0].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
         
