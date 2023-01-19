@@ -149,7 +149,8 @@ module.exports = {
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
         console.log(lastIndexObj)
-        console.log(currentIndex)
+        console.log(typeof(lastIndexObj))
+        console.log(typeof(currentIndex))
 
         if (lastIndexObj == currentIndex) {
             let disable = "true"
