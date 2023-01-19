@@ -150,6 +150,7 @@ module.exports = {
 
         console.log(lastIndexObj)
         console.log(typeof(lastIndexObj))
+        console.log(currentIndex)
         console.log(typeof(currentIndex))
 
         if (lastIndexObj === currentIndex) {
