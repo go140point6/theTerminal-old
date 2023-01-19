@@ -274,7 +274,7 @@ module.exports = {
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     //.setAuthor({ name: client.user.username })
-                    .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
+                    .setDescription(`This address has ${currentOffers.length} BUY offers (highest only).`)
                     .setThumbnail(client.user.avatarURL())
                     /*
                     .addFields(
