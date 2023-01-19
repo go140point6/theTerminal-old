@@ -237,7 +237,7 @@ module.exports = {
                 let lastIndexObj = (currentOffers.length - 1);
                 console.log(lastIndexObj);
 
-                let rawAmount = currentOffers.at(indexArray);
+                let rawAmount = currentOffers.at(0);
                 let amount = (Number(rawAmount))/1000000;
 
                 /*
