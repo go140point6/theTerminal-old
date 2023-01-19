@@ -238,7 +238,9 @@ module.exports = {
                 console.log(lastIndexObj);
 
                 let rawAmount = currentOffers.at(0);
+                console.log(rawAmount);
                 let amount = (Number(rawAmount))/1000000;
+                console.log(amount);
 
                 /*
                 while (indexArray < currentOffers.length) {
@@ -260,7 +262,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setLabel('More Info')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://xrp.cafe/nft/${currentOffers[0].NFTokenID}`),
+                        .setURL(`https://nftoken.id/?${currentOffers[0].NFTokenID}`),
                     new ButtonBuilder()
                         .setCustomId('next')
                         .setLabel('Next')
@@ -274,7 +276,7 @@ module.exports = {
                     //.setAuthor({ name: client.user.username })
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
-                    .addFields({ name: `Showing offer ${currentOffers[0]}`, value: amount.toString() })
+                    .addFields({ name: `Showing offer ${currentOffers[0].offerNo}`, value: amount.toString(), inline: true })
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[0].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
