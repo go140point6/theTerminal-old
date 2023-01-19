@@ -148,14 +148,13 @@ module.exports = {
                 */
 
                 let totalNetOffers = currentOffers.length
-                console.log(totalNetOffers);
 
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
                     Object.entries(offer.buy).forEach(([key, val]) => {
                         //console.log(`${key} ${val}`)
                         //console.log(val)
-                        //console.log(key)
+                        console.log(key)
                         //console.log(offer.buy[key])
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(key)
@@ -194,7 +193,7 @@ module.exports = {
                         //console.log(currentOffers)
                     })
                     totalNetOffers = currentOffers.length
-                    console.log(totalNetOffers)
+                    //console.log(totalNetOffers)
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
