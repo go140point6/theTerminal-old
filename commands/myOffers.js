@@ -4,7 +4,12 @@ const client = require('../index');
 const xrpl = require("xrpl");
 //const { hexToString } = require('../utils/hexToString');
 
+var offers;
+var currentOffers2;
 var currentIndex;
+var lastIndexObj;
+var rawAmount;
+var amount;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -142,6 +147,7 @@ module.exports = {
 
     async function nextOffer(i) {
         console.log('user hit next in function')
+        console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
     }
 
     async function buyOffers(i) {
@@ -150,7 +156,7 @@ module.exports = {
                 //console.log(res.data.data.offers)
                 console.log(res.data.data.offers.length)
 
-                let offers = res.data.data.offers;
+                offers = res.data.data.offers;
                 let currentOffers = [];
                 //let count = 0;
 
@@ -210,7 +216,7 @@ module.exports = {
                     })
                 })
 
-                const currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
+                currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
 
                 //console.log(currentOffers2);
 
@@ -281,15 +287,15 @@ module.exports = {
                 );
                 */
 
-                console.log(currentOffers.length);
-                let lastIndexObj = (currentOffers.length - 1);
+                console.log(currentOffers2.length);
+                lastIndexObj = (currentOffers2.length - 1);
                 console.log(lastIndexObj);
 
                 $currentIndex = 0;
 
-                let rawAmount = currentOffers.at($currentIndex).Amount;
+                rawAmount = currentOffers2.at($currentIndex).Amount;
                 console.log(rawAmount);
-                let amount = (Number(rawAmount))/1000000;
+                amount = (Number(rawAmount))/1000000;
                 console.log(amount);
 
                 /*
@@ -312,7 +318,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setLabel('More Info')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://nftoken.id/?${currentOffers[$currentIndex].NFTokenID}`),
+                        .setURL(`https://nftoken.id/?${currentOffers2[$currentIndex].NFTokenID}`),
                     new ButtonBuilder()
                         .setCustomId('next')
                         .setLabel('Next')
@@ -324,7 +330,7 @@ module.exports = {
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     //.setAuthor({ name: client.user.username })
-                    .setDescription(`This address has ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
+                    .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
                     /*
                     .addFields(
@@ -336,7 +342,7 @@ module.exports = {
                     .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[$currentIndex].NFTokenID}?thumbnail=true`)
+                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[$currentIndex].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     //.setFooter({ text: `${address}` });
                     //.setFooter({ text: "\u3000".repeat(100) });
