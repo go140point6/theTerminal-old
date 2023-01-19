@@ -195,6 +195,8 @@ module.exports = {
                     })
                 })
 
+                const currentOffers2 = currentOffers;
+
                 const iterator = currentOffers.keys();
 
                 for (const key2 of iterator) {
@@ -202,6 +204,7 @@ module.exports = {
                 }
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
+                console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
                 //const currentOffers2 = currentOffers;
 
