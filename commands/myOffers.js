@@ -278,8 +278,8 @@ module.exports = {
                     .setThumbnail(client.user.avatarURL())
                     .addFields(
                         { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
-                        { name: '1', value: '1' },
-                        { name: '2', value: '2' },
+                        { name: '1', value: '1', inline: true },
+                        { name: '2', value: '2', inline: true },
                     )
                     //.addFields({ name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
