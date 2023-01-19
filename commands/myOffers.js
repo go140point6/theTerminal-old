@@ -318,7 +318,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setLabel('More Info')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://nftoken.id/?${currentOffers2[$currentIndex].NFTokenID}`),
+                        .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
                     new ButtonBuilder()
                         .setCustomId('next')
                         .setLabel('Next')
@@ -342,7 +342,7 @@ module.exports = {
                     .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[$currentIndex].NFTokenID}?thumbnail=true`)
+                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[currentIndex].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     //.setFooter({ text: `${address}` });
                     //.setFooter({ text: "\u3000".repeat(100) });
