@@ -83,7 +83,6 @@ module.exports = {
                 //const IPFS = getIPFS();
                 //console.log(IPFS) <-- Promise Pending
                 currentIndex++
-                console.log(currentIndex);
                 nextOffer(i);
 
         } else {
@@ -146,8 +145,56 @@ module.exports = {
     */
 
     async function nextOffer(i) {
-        console.log('user hit next in function')
+        console.log(currentIndex);
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
+
+        if (lastIndexObj == currentIndex) {
+            let disable = true
+        } else {
+            let disable = false
+        }
+
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('prev')
+                .setLabel('Previous')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+            new ButtonBuilder()
+                .setLabel('More Info')
+                .setStyle(ButtonStyle.Link)
+                .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
+            new ButtonBuilder()
+                .setCustomId('next')
+                .setLabel('Next')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(disable),
+        );                
+
+        const editBuyEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
+            .setThumbnail(client.user.avatarURL())
+            /*
+            .addFields(
+                { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
+                { name: '1', value: '1', inline: true },
+                { name: '2', value: '2', inline: true },
+            )
+            */
+            .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+            //.addFields({ name: `1`, value: '1', inline: false })
+            //.addFields({ name: `2`, value: '2', inline: false })
+            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[currentIndex].NFTokenID}?thumbnail=true`)
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+            //.setFooter({ text: "\u3000".repeat(100) });
+
+        //await i.update({ content: 'A button was clicked!', components: [] });
+        i.update({ embeds: [editBuyEmbed], components: [row] });
     }
 
     async function buyOffers(i) {
