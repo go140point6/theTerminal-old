@@ -147,14 +147,12 @@ module.exports = {
                 })
                 */
 
-                let totalNetOffers = currentOffers.length
-
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
                     Object.entries(offer.buy).forEach(([key, val]) => {
                         //console.log(`${key} ${val}`)
                         //console.log(val)
-                        console.log(key)
+                        //console.log(key)
                         //console.log(offer.buy[key])
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(key)
@@ -192,8 +190,6 @@ module.exports = {
                         //console.log(currentOffers.length)
                         //console.log(currentOffers)
                     })
-                    totalNetOffers = currentOffers.length
-                    //console.log(totalNetOffers)
                 })
 
                 console.log(`There are ${currentOffers.length} BUY offers when including only the highest offer on an NFT`);
@@ -287,7 +283,7 @@ module.exports = {
                         { name: '2', value: '2', inline: true },
                     )
                     */
-                    .addFields({ name: `Showing offer \#${currentOffers[5].numOfOffer}`, value: `${amount.toString()} XRP`, inline: false })
+                    .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
