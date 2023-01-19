@@ -262,7 +262,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setLabel('More Info')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://nftoken.id/?${currentOffers[1].NFTokenID}`),
+                        .setURL(`https://nftoken.id/?${currentOffers[5].NFTokenID}`),
                     new ButtonBuilder()
                         .setCustomId('next')
                         .setLabel('Next')
@@ -274,7 +274,7 @@ module.exports = {
                     .setColor('DarkRed')
                     .setTitle(`Welcome to The Terminal`)
                     //.setAuthor({ name: client.user.username })
-                    .setDescription(`This address has ${currentOffers.length} BUY offers (highest only).`)
+                    .setDescription(`This address has ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
                     /*
                     .addFields(
@@ -286,7 +286,7 @@ module.exports = {
                     .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
+                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[5].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     //.setFooter({ text: `${address}` });
                     //.setFooter({ text: "\u3000".repeat(100) });
