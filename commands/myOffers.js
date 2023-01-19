@@ -4,6 +4,8 @@ const client = require('../index');
 const xrpl = require("xrpl");
 //const { hexToString } = require('../utils/hexToString');
 
+var currentIndex;
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
@@ -43,7 +45,7 @@ module.exports = {
     await interaction.reply({ embeds: [initialEmbed], components: [row] });
     console.log(interaction.user.id);
     
-    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
+    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 150000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
@@ -53,7 +55,7 @@ module.exports = {
             //console.log(IPFS) <-- Promise Pending
             buyOffers(i);
 
-         } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
+        } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
           
                 const editSellEmbed = new EmbedBuilder()
     
@@ -70,6 +72,15 @@ module.exports = {
                 //await i.update({ content: 'A button was clicked!', components: [] });
                 i.update({ embeds: [editSellEmbed], components: [] });
                 collector.stop('Collector stopped manually');    
+        } else if (i.user.id === interaction.user.id && i.customId === 'next') {
+            
+                console.log('User hit next');
+                //const IPFS = getIPFS();
+                //console.log(IPFS) <-- Promise Pending
+                $currentIndex++
+                console.log(currentIndex);
+                nextOffer(i);
+
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
@@ -128,6 +139,10 @@ module.exports = {
         //const getString = hexToUtf8()
     }
     */
+
+    async function nextOffer(i) {
+        console.log('user hit next in function')
+    }
 
     async function buyOffers(i) {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
@@ -270,7 +285,7 @@ module.exports = {
                 let lastIndexObj = (currentOffers.length - 1);
                 console.log(lastIndexObj);
 
-                let $currentIndex = 0;
+                $currentIndex = 0;
 
                 let rawAmount = currentOffers.at($currentIndex).Amount;
                 console.log(rawAmount);
@@ -328,7 +343,7 @@ module.exports = {
         
                 //await i.update({ content: 'A button was clicked!', components: [] });
                 i.update({ embeds: [editBuyEmbed], components: [row] });
-                collector.stop('Collector stopped manually');
+                //collector.stop('Collector stopped manually');
 
                 /*
                 let offers = res.data.data.offers;
