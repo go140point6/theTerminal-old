@@ -154,12 +154,12 @@ module.exports = {
         console.log(typeof(currentIndex))
 
         if (lastIndexObj === currentIndex) {
-            let disable = "true"
+            console.log(true)
         } else {
-            let disable = "false"
+            console.log(false)
         }
 
-        console.log(disable);    
+        //console.log(disable);    
 
         const row = new ActionRowBuilder()
         .addComponents(
@@ -176,7 +176,7 @@ module.exports = {
                 .setCustomId('next')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(`${disable}`),
+                .setDisabled(true),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
