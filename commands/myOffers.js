@@ -293,7 +293,7 @@ module.exports = {
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
-                    //.setTimestamp()
+                    .setTimestamp()
                     //.setFooter({ text: `${address}` });
                     //.setFooter({ text: "\u3000".repeat(100) });
         
