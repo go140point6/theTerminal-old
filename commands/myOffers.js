@@ -276,17 +276,19 @@ module.exports = {
                     //.setAuthor({ name: client.user.username })
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
+                    /*
                     .addFields(
                         { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
                         { name: '1', value: '1', inline: true },
                         { name: '2', value: '2', inline: true },
                     )
+                    */
                     //.addFields({ name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
-                    .setTimestamp()
-                    .setFooter({ text: `${address}` });
+                    //.setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
+                    //.setTimestamp()
+                    //.setFooter({ text: `${address}` });
                     //.setFooter({ text: "\u3000".repeat(100) });
         
                 //await i.update({ content: 'A button was clicked!', components: [] });
