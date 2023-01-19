@@ -206,7 +206,8 @@ module.exports = {
                     currentOffers2[key2].index = key2
                 }
 
-                console.log(currentOffers2);
+                //console.log(currentOffers2);
+
                 /*
                 const iterator = currentOffers2.keys();
 
@@ -269,7 +270,9 @@ module.exports = {
                 let lastIndexObj = (currentOffers.length - 1);
                 console.log(lastIndexObj);
 
-                let rawAmount = currentOffers.at(5).Amount;
+                let $currentIndex = 0;
+
+                let rawAmount = currentOffers.at($currentIndex).Amount;
                 console.log(rawAmount);
                 let amount = (Number(rawAmount))/1000000;
                 console.log(amount);
@@ -294,7 +297,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setLabel('More Info')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://nftoken.id/?${currentOffers[5].NFTokenID}`),
+                        .setURL(`https://nftoken.id/?${currentOffers[$currentIndex].NFTokenID}`),
                     new ButtonBuilder()
                         .setCustomId('next')
                         .setLabel('Next')
@@ -318,7 +321,7 @@ module.exports = {
                     .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
                     //.addFields({ name: `1`, value: '1', inline: false })
                     //.addFields({ name: `2`, value: '2', inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[5].NFTokenID}?thumbnail=true`)
+                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[$currentIndex].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     //.setFooter({ text: `${address}` });
                     //.setFooter({ text: "\u3000".repeat(100) });
