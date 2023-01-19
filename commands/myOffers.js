@@ -201,7 +201,7 @@ module.exports = {
                     let rawAmount = (offer.Amount);
                     let amount = (Number(rawAmount))/1000000;
 
-                    embedFields.push({ name: offer.NFTokenID, value: amount.toString() })
+                    embedFields.push({ name: offer.NFTokenID, value: amount.toString(), inline: false })
                 })
 
                 const row = new ActionRowBuilder()
