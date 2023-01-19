@@ -276,11 +276,16 @@ module.exports = {
                     //.setAuthor({ name: client.user.username })
                     .setDescription(`There are ${currentOffers.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
+                    /*
                     .addFields(
                         { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
                         { name: '\u200B', value: '\u200B' },
                         { name: '\u200B', value: '\u200B' },
                     )
+                    */
+                    .addFields({ name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true })
+                    .addFields({ name: `1`, value: '1', inline: true })
+                    .addFields({ name: `2`, value: '2', inline: true })
                     .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers[1].NFTokenID}?thumbnail=true`)
                     .setTimestamp()
                     .setFooter({ text: `${address}` });
