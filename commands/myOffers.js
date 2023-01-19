@@ -147,6 +147,8 @@ module.exports = {
                 })
                 */
                 
+                let numOfOffer = 1;
+
                 offers.forEach(offer => {
                     //console.log(offer.buy[0])
                     Object.entries(offer.buy).forEach(([key, val]) => {
@@ -157,8 +159,6 @@ module.exports = {
                         //console.log(offer.buy[key].NFTokenID)
                         //console.log(key)
                         //console.log(offer.buy[key].Amount)
-
-                        let numOfOffer = 1;
                         
                         const findNFTIndex = currentOffers.findIndex(
                             (nftid) => nftid.NFTokenID === offer.buy[key].NFTokenID
