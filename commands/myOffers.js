@@ -238,7 +238,7 @@ module.exports = {
         const row = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
-                .setCustomId('prevBuy')
+                .setCustomId('prevSell')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false),
@@ -247,7 +247,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Link)
                 .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
             new ButtonBuilder()
-                .setCustomId('nextBuy')
+                .setCustomId('nextSell')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false),
@@ -289,7 +289,7 @@ module.exports = {
         const row = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
-                .setCustomId('prevBuy')
+                .setCustomId('prevSell')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false),
@@ -298,7 +298,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Link)
                 .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
             new ButtonBuilder()
-                .setCustomId('nextBuy')
+                .setCustomId('nextSell')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false),
