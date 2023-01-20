@@ -218,6 +218,113 @@ module.exports = {
         //console.log(amount);
     }
 
+    async function nextSellOffer(i) {
+        console.log(currentIndex);
+        console.log(`There are ${currentSellOffers2.length} BUY offers when including only the highest offer on an NFT`);
+
+        getSellPrice();
+
+        console.log(lastIndexObj)
+        console.log(typeof(lastIndexObj))
+        console.log(currentIndex)
+        console.log(typeof(currentIndex))
+
+        if (lastIndexObj === currentIndex) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
+
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('prevBuy')
+                .setLabel('Previous')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+            new ButtonBuilder()
+                .setLabel('More Info')
+                .setStyle(ButtonStyle.Link)
+                .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
+            new ButtonBuilder()
+                .setCustomId('nextBuy')
+                .setLabel('Next')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+        );                
+
+        const editSellEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`This address has ${currentSellOffers2.length} SELL offers, counting ONLY the lowest offer on an NFT.`)
+            .setThumbnail(client.user.avatarURL())
+            .addFields({ name: `The lowest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentSellOffers2[currentIndex].NFTokenID}?thumbnail=true`)
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+
+        i.update({ embeds: [editSellEmbed], components: [row] });
+    }
+
+    async function prevSellOffer(i) {
+        console.log(currentIndex);
+        console.log(`There are ${currentSellOffers2.length} SELL offers when including only the lowest offer on an NFT.`);
+
+        getSellPrice();
+
+        console.log(lastIndexObj)
+        console.log(typeof(lastIndexObj))
+        console.log(currentIndex)
+        console.log(typeof(currentIndex))
+
+        if (lastIndexObj === currentIndex) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
+
+        //console.log(disable);    
+
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('prevBuy')
+                .setLabel('Previous')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+            new ButtonBuilder()
+                .setLabel('More Info')
+                .setStyle(ButtonStyle.Link)
+                .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
+            new ButtonBuilder()
+                .setCustomId('nextBuy')
+                .setLabel('Next')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+        );                
+
+        const editSellEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`This address has ${currentSellOffers2.length} SELL offers when including only the lowest offer on an NFT.`)
+            .setThumbnail(client.user.avatarURL())
+            .addFields({ name: `The lowest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentSellOffers2[currentIndex].NFTokenID}?thumbnail=true`)
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+
+        i.update({ embeds: [editSellEmbed], components: [row] });
+    }
+
+    async function getBuyPrice() {
+        rawAmount = currentOffers2.at(currentIndex).Amount;
+        //console.log(rawAmount);
+        amount = (Number(rawAmount))/1000000;
+        //console.log(amount);
+    }
+
     async function getSellPrice() {
         rawAmount = currentSellOffers2.at(currentIndex).Amount;
         //console.log(rawAmount);
