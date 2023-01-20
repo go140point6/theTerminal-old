@@ -50,7 +50,7 @@ module.exports = {
     await interaction.reply({ embeds: [initialEmbed], components: [row] });
     console.log(interaction.user.id);
     
-    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 150000 });
+    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
@@ -92,7 +92,7 @@ module.exports = {
 
     collector.on('end', async (collected, reason) => {
         //console.log(`Collected ${collected.size} items`)
-        if (collected.size == 0) {
+        //if (collected.size == 0) {
             //console.log(`It was zero`);
             await interaction.editReply({ components: [] });
             const shutdownEmbed = new EmbedBuilder()
@@ -100,7 +100,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`No input, systems shutting down`)
+            .setDescription(`Time is up, systems shutting down`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -108,9 +108,9 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
             await interaction.editReply({ embeds: [shutdownEmbed], components: [] });
-        } else {
-            console.log((`Collected ${collected.size} items`));
-        }
+        //} else {
+        //    console.log((`Collected ${collected.size} items`));
+        //}
     });
 
     async function getIPFS() {
