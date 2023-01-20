@@ -85,14 +85,6 @@ module.exports = {
                 currentIndex++
                 nextBuyOffer(i);
 
-        } else if (i.user.id === interaction.user.id && i.customId === 'prevBuy') {
-            
-            console.log('User hit prev');
-            //const IPFS = getIPFS();
-            //console.log(IPFS) <-- Promise Pending
-            currentIndex--
-            nextBuyOffer(i);
-
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
         }
@@ -153,68 +145,6 @@ module.exports = {
     */
 
     async function nextBuyOffer(i) {
-        console.log(currentIndex);
-        console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
-
-        getPrice();
-
-        console.log(lastIndexObj)
-        console.log(typeof(lastIndexObj))
-        console.log(currentIndex)
-        console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
-
-        //console.log(disable);    
-
-        const row = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('prevBuy')
-                .setLabel('Previous')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-            new ButtonBuilder()
-                .setLabel('More Info')
-                .setStyle(ButtonStyle.Link)
-                .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
-            new ButtonBuilder()
-                .setCustomId('nextBuy')
-                .setLabel('Next')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-        );                
-
-        const editBuyEmbed = new EmbedBuilder()
-            .setColor('DarkRed')
-            .setTitle(`Welcome to The Terminal`)
-            //.setAuthor({ name: client.user.username })
-            .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
-            .setThumbnail(client.user.avatarURL())
-            /*
-            .addFields(
-                { name: `Showing offer ${currentOffers[1].NFTokenID}`, value: amount.toString(), inline: true },
-                { name: '1', value: '1', inline: true },
-                { name: '2', value: '2', inline: true },
-            )
-            */
-            .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-            //.addFields({ name: `1`, value: '1', inline: false })
-            //.addFields({ name: `2`, value: '2', inline: false })
-            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[currentIndex].NFTokenID}?thumbnail=true`)
-            .setTimestamp()
-            //.setFooter({ text: `${address}` });
-            //.setFooter({ text: "\u3000".repeat(100) });
-
-        //await i.update({ content: 'A button was clicked!', components: [] });
-        i.update({ embeds: [editBuyEmbed], components: [row] });
-    }
-
-    async function prevBuyOffer(i) {
         console.log(currentIndex);
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
