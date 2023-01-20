@@ -148,6 +148,8 @@ module.exports = {
         console.log(currentIndex);
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
+        getPrice();
+
         console.log(lastIndexObj)
         console.log(typeof(lastIndexObj))
         console.log(currentIndex)
@@ -176,7 +178,7 @@ module.exports = {
                 .setCustomId('next')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(true),
+                .setDisabled(false),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
@@ -202,6 +204,13 @@ module.exports = {
 
         //await i.update({ content: 'A button was clicked!', components: [] });
         i.update({ embeds: [editBuyEmbed], components: [row] });
+    }
+
+    async function getPrice() {
+        rawAmount = currentOffers2.at(currentIndex).Amount;
+        console.log(rawAmount);
+        amount = (Number(rawAmount))/1000000;
+        console.log(amount);
     }
 
     async function buyOffers(i) {
@@ -347,10 +356,7 @@ module.exports = {
 
                 currentIndex = 0;
 
-                rawAmount = currentOffers2.at(currentIndex).Amount;
-                console.log(rawAmount);
-                amount = (Number(rawAmount))/1000000;
-                console.log(amount);
+                getPrice();
 
                 /*
                 while (indexArray < currentOffers.length) {
