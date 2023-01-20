@@ -75,12 +75,12 @@ module.exports = {
         } else if (i.user.id === interaction.user.id && i.customId === 'nextSell') {
 
             currentIndex++
-            nextBuyOffer(i);
+            nextSellOffer(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'prevSell') {
             
             currentIndex--
-            nextBuyOffer(i);
+            nextSellOffer(i);
             
         } else {
 
