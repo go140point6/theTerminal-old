@@ -324,7 +324,7 @@ module.exports = {
                     Object.entries(offer.sell).forEach(([key, val]) => {
                         
                         const findNFTIndex = currentOffers.findIndex(
-                            (nftid) => nftid.NFTokenID === offer.buy[key].NFTokenID
+                            (nftid) => nftid.NFTokenID === offer.sell[key].NFTokenID
                         )
 
                         if (findNFTIndex == -1) {
