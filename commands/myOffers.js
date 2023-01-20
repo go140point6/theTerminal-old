@@ -4,7 +4,7 @@ const client = require('../index');
 
 var offers;
 var currentOffers2;
-var currentSellOffers2
+var currentSellOffers2;
 var currentIndex;
 var lastIndexObj;
 var rawAmount;
@@ -318,7 +318,7 @@ module.exports = {
                 //console.log(res.data.data.offers.length)
 
                 offers = res.data.data.offers;
-                let currentOffers = [];
+                let currentSellOffers = [];
 
                 offers.forEach(offer => {
                     Object.entries(offer.sell).forEach(([key, val]) => {
@@ -328,7 +328,7 @@ module.exports = {
                         )
 
                         if (findNFTIndex == -1) {
-                            currentOffers.push({
+                            currentSellOffers.push({
                                 "offerNo": key, 
                                 "Amount":offer.sell[key].Amount, 
                                 "NFTokenID": offer.sell[key].NFTokenID, 
@@ -338,7 +338,7 @@ module.exports = {
                                 "Expiration": offer.sell[key].Expiration
                             })
                         } else {
-                            currentOffers[findNFTIndex] = {
+                            currentSellOffers[findNFTIndex] = {
                                 "offerNo": key, 
                                 "Amount":offer.sell[key].Amount, 
                                 "NFTokenID": offer.sell[key].NFTokenID, 
