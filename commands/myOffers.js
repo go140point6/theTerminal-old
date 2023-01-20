@@ -3,6 +3,7 @@ const axios = require('axios');
 const client = require('../index');
 
 var offers;
+var sellOffers;
 var currentOffers2;
 var currentSellOffers2;
 var currentIndex;
@@ -317,13 +318,13 @@ module.exports = {
                 //console.log(res.data.data.offers)
                 //console.log(res.data.data.offers.length)
 
-                offers = res.data.data.offers;
+                sellOffers = res.data.data.offers;
                 let currentSellOffers = [];
 
-                offers.forEach(offer => {
+                sellOffers.forEach(offer => {
                     Object.entries(offer.sell).forEach(([key, val]) => {
                         
-                        const findNFTIndex = currentOffers.findIndex(
+                        const findNFTIndex = currentSellOffers.findIndex(
                             (nftid) => nftid.NFTokenID === offer.sell[key].NFTokenID
                         )
 
