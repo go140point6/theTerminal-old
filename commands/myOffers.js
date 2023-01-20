@@ -77,13 +77,13 @@ module.exports = {
                 //await i.update({ content: 'A button was clicked!', components: [] });
                 i.update({ embeds: [editSellEmbed], components: [] });
                 collector.stop('Collector stopped manually');    
-        } else if (i.user.id === interaction.user.id && i.customId === 'next') {
+        } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
             
                 console.log('User hit next');
                 //const IPFS = getIPFS();
                 //console.log(IPFS) <-- Promise Pending
                 currentIndex++
-                nextOffer(i);
+                nextBuyOffer(i);
 
         } else {
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
@@ -144,7 +144,7 @@ module.exports = {
     }
     */
 
-    async function nextOffer(i) {
+    async function nextBuyOffer(i) {
         console.log(currentIndex);
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
@@ -166,7 +166,7 @@ module.exports = {
         const row = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
-                .setCustomId('prev')
+                .setCustomId('prevBuy')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false),
@@ -175,7 +175,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Link)
                 .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
             new ButtonBuilder()
-                .setCustomId('next')
+                .setCustomId('nextBuy')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
                 .setDisabled(false),
@@ -371,7 +371,7 @@ module.exports = {
                 const row = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
-                        .setCustomId('prev')
+                        .setCustomId('prevBuy')
                         .setLabel('Previous')
                         .setStyle(ButtonStyle.Primary)
                         .setDisabled(true),
@@ -380,7 +380,7 @@ module.exports = {
                         .setStyle(ButtonStyle.Link)
                         .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
                     new ButtonBuilder()
-                        .setCustomId('next')
+                        .setCustomId('nextBuy')
                         .setLabel('Next')
                         .setStyle(ButtonStyle.Primary)
                         .setDisabled(false),
