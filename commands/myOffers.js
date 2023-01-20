@@ -115,7 +115,7 @@ module.exports = {
         console.log(currentIndex);
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
-        getPrice();
+        getBuyPrice();
 
         console.log(lastIndexObj)
         console.log(typeof(lastIndexObj))
@@ -164,7 +164,7 @@ module.exports = {
         console.log(currentIndex);
         console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
-        getPrice();
+        getBuyPrice();
 
         console.log(lastIndexObj)
         console.log(typeof(lastIndexObj))
@@ -211,8 +211,15 @@ module.exports = {
         i.update({ embeds: [editBuyEmbed], components: [row] });
     }
 
-    async function getPrice() {
+    async function getBuyPrice() {
         rawAmount = currentOffers2.at(currentIndex).Amount;
+        //console.log(rawAmount);
+        amount = (Number(rawAmount))/1000000;
+        //console.log(amount);
+    }
+
+    async function getSellPrice() {
+        rawAmount = currentSellOffers2.at(currentIndex).Amount;
         //console.log(rawAmount);
         amount = (Number(rawAmount))/1000000;
         //console.log(amount);
@@ -275,7 +282,7 @@ module.exports = {
 
                 currentIndex = 0;
 
-                getPrice();
+                getBuyPrice();
 
                 const row = new ActionRowBuilder()
                 .addComponents(
@@ -369,7 +376,7 @@ module.exports = {
 
                 currentIndex = 0;
 
-                getPrice();
+                getSellPrice();
 
                 const row = new ActionRowBuilder()
                 .addComponents(
