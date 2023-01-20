@@ -407,7 +407,7 @@ module.exports = {
                     .setTimestamp()
                     //.setFooter({ text: `${address}` });
         
-                i.update({ embeds: [editBuyEmbed], components: [row] });
+                i.update({ embeds: [editSellEmbed], components: [row] });
                 //collector.stop('Collector stopped manually');
             }
         })
