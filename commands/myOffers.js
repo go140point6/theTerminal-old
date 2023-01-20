@@ -50,7 +50,7 @@ module.exports = {
     await interaction.reply({ embeds: [initialEmbed], components: [row] });
     console.log(interaction.user.id);
     
-    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 20000 });
+    const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 120000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'buy') {
