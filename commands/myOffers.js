@@ -11,8 +11,8 @@ var currentIndex;
 var lastIndexObj;
 var rawAmount;
 var amount;
-var indexState;
-//var NextState;
+var indexPrevState;
+var indexNextState;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -166,8 +166,7 @@ module.exports = {
                             .setCustomId('prevBuy')
                             .setLabel('Previous')
                             .setStyle(ButtonStyle.Primary)
-                            //.setDisabled(Boolean(`${indexState}`)),
-                            .setDisabled(`${indexState}`),
+                            .setDisabled(Boolean(`${indexPrevState}`)),
                         new ButtonBuilder()
                             .setLabel('More Info')
                             .setStyle(ButtonStyle.Link)
@@ -176,8 +175,7 @@ module.exports = {
                             .setCustomId('nextBuy')
                             .setLabel('Next')
                             .setStyle(ButtonStyle.Primary)
-                            //.setDisabled(Boolean(`${indexState}`)),
-                            .setDisabled(`${indexState}`),
+                            .setDisabled(Boolean(`${indexNextState}`)),
                     );                
 
                     const editBuyEmbed = new EmbedBuilder()
@@ -205,16 +203,23 @@ module.exports = {
         //console.log(amount);
     }
 
-    async function getIndexState() {
+    async function getNextIndexState() {
         if (lastIndexObj === currentIndex) {
             console.log(true)
-            indexState = true;
-            console.log(typeof(indexState))
-            
+            indexNextState = true; //disables Next button          
         } else {
             console.log(false)
-            indexState = false;
-            console.log(typeof(indexState))
+            indexNextState = false; //enables Next button
+        }
+    }
+
+    async function getPrevIndexState() {
+        if (currentIndex === 0) {
+            console.log(true)
+            indexPrevState = true; //disables Previous button          
+        } else {
+            console.log(false)
+            indexPrevState = false; //enables Previous button
         }
     }
 
@@ -223,7 +228,8 @@ module.exports = {
         //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
         getBuyPrice();
-        getIndexState();
+        getNextIndexState();
+        getPrevIndexState();
 
         //console.log(lastIndexObj)
         //console.log(typeof(lastIndexObj))
