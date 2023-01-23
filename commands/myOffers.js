@@ -301,7 +301,7 @@ module.exports = {
 
     async function noBuyOffers(i) {
 
-        const editNoBuyOfersEmbed = new EmbedBuilder()
+        const editNoBuyOffersEmbed = new EmbedBuilder()
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
