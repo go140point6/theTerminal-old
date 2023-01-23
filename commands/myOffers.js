@@ -97,7 +97,7 @@ module.exports = {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
                 console.log(res.data.data.offers)
-                console.log(res.data.data.offers.length)
+                //console.log(res.data.data.offers.length)
 
                 offers = res.data.data.offers;
                 let currentOffers = [];
@@ -133,58 +133,64 @@ module.exports = {
                     })
                 })
 
-                currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
+                if (!currentOffers.length) {
+                    noBuyOffers();
+                } else {
 
-                const iterator = currentOffers2.keys();
+                    currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
 
-                for (const key2 of iterator) {
-                    //console.log(key2);
-                    currentOffers2[key2].index = key2
-                }
+                    const iterator = currentOffers2.keys();
 
-                //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
+                    for (const key2 of iterator) {
+                        //console.log(key2);
+                        currentOffers2[key2].index = key2
+                    }
 
-                //console.log(currentOffers2.length);
-                lastIndexObj = (currentOffers2.length - 1);
-                //console.log(lastIndexObj);
+                    //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
-                currentIndex = 0;
+                    //console.log(currentOffers2.length);
+                    lastIndexObj = (currentOffers2.length - 1);
+                    //console.log(lastIndexObj);
 
-                getBuyPrice();
+                    currentIndex = 0;
 
-                const row = new ActionRowBuilder()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setCustomId('prevBuy')
-                        .setLabel('Previous')
-                        .setStyle(ButtonStyle.Primary)
-                        .setDisabled(true),
-                    new ButtonBuilder()
-                        .setLabel('More Info')
-                        .setStyle(ButtonStyle.Link)
-                        .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
-                    new ButtonBuilder()
-                        .setCustomId('nextBuy')
-                        .setLabel('Next')
-                        .setStyle(ButtonStyle.Primary)
-                        .setDisabled(false),
-                );                
+                    if (!currentOffers)
+                    getBuyPrice();
 
-                const editBuyEmbed = new EmbedBuilder()
-                    .setColor('DarkRed')
-                    .setTitle(`Welcome to The Terminal`)
-                    //.setAuthor({ name: client.user.username })
-                    .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
-                    .setThumbnail(client.user.avatarURL())
-                    .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-                    .setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
-                    .setTimestamp()
-                    //.setFooter({ text: `${address}` });
+                    const row = new ActionRowBuilder()
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setCustomId('prevBuy')
+                            .setLabel('Previous')
+                            .setStyle(ButtonStyle.Primary)
+                            .setDisabled(true),
+                        new ButtonBuilder()
+                            .setLabel('More Info')
+                            .setStyle(ButtonStyle.Link)
+                            .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
+                        new ButtonBuilder()
+                            .setCustomId('nextBuy')
+                            .setLabel('Next')
+                            .setStyle(ButtonStyle.Primary)
+                            .setDisabled(false),
+                    );                
+
+                    const editBuyEmbed = new EmbedBuilder()
+                        .setColor('DarkRed')
+                        .setTitle(`Welcome to The Terminal`)
+                        //.setAuthor({ name: client.user.username })
+                        .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
+                        .setThumbnail(client.user.avatarURL())
+                        .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+                        .setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
+                        .setTimestamp()
+                        //.setFooter({ text: `${address}` });
         
-                i.update({ embeds: [editBuyEmbed], components: [row] });
-                //collector.stop('Collector stopped manually');
+                    i.update({ embeds: [editBuyEmbed], components: [row] });
+                    //collector.stop('Collector stopped manually');
+                }
             }
-        })
+         })
     };
 
     async function getBuyPrice() {
@@ -294,5 +300,22 @@ module.exports = {
         i.update({ embeds: [editBuyEmbed], components: [row] });
     }
 
+    async function noBuyOffers(i) {
+
+        const editBuyEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`This address currently has ZERO BUY offers.  Shutting down.`)
+            .setThumbnail(client.user.avatarURL())
+            //.addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+            //.setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+
+        i.update({ embeds: [editBuyEmbed] });
+        collector.stop('Collector stopped due to no BUY orders.');
+    }  
+    
     }
 };
