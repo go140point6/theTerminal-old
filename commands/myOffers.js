@@ -250,7 +250,7 @@ module.exports = {
                 .setCustomId('prevBuy')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(`${indexState}`),
+                .setDisabled(indexPrevState),
             new ButtonBuilder()
                 .setLabel('More Info')
                 .setStyle(ButtonStyle.Link)
@@ -259,7 +259,7 @@ module.exports = {
                 .setCustomId('nextBuy')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(`${indexState}`),
+                .setDisabled(indexNextState),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
@@ -296,7 +296,7 @@ module.exports = {
                 .setCustomId('prevBuy')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(`${indexState}`),
+                .setDisabled(indexPrevState),
             new ButtonBuilder()
                 .setLabel('More Info')
                 .setStyle(ButtonStyle.Link)
@@ -305,7 +305,7 @@ module.exports = {
                 .setCustomId('nextBuy')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(`${indexState}`),
+                .setDisabled(indexNextState),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
