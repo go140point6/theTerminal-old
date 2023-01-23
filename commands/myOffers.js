@@ -207,20 +207,20 @@ module.exports = {
     async function getNextIndexState() {
         if (lastIndexObj === currentIndex) {
             console.log(true)
-            indexNextState = true; //disables Next button          
+            //indexNextState = true; //disables Next button          
         } else {
             console.log(false)
-            indexNextState = false; //enables Next button
+            //indexNextState = ; //enables Next button
         }
     }
 
     async function getPrevIndexState() {
         if (currentIndex === 0) {
             console.log(true)
-            indexPrevState = true; //disables Previous button          
+            //indexPrevState = true; //disables Previous button          
         } else {
             console.log(false)
-            indexPrevState = false; //enables Previous button
+            //indexPrevState = false; //enables Previous button
         }
     }
 
