@@ -14,7 +14,7 @@ var amount;
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
-        .setDescription('Current BUY or SELL offers for an address')
+        .setDescription('Current BUY offers for an address')
         .addStringOption((option) =>
         option
             .setName("address")
@@ -27,20 +27,16 @@ module.exports = {
         const row = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
-                .setCustomId('buy')
-                .setLabel('BUY')
+                .setCustomId('start')
+                .setLabel('Get Started')
                 .setStyle(ButtonStyle.Success),
-            new ButtonBuilder()
-                .setCustomId('sell')
-                .setLabel('SELL')
-                .setStyle(ButtonStyle.Danger),
         );
 
         const initialEmbed = new EmbedBuilder()
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`Would you like to view BUY or SELL offers?`)
+            .setDescription(`To view current BUY offers on this address, press Get Started.`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -53,15 +49,11 @@ module.exports = {
     const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 120000 });
 
     collector.on('collect', async i => {
-        if (i.user.id === interaction.user.id && i.customId === 'buy') {
+        if (i.user.id === interaction.user.id && i.customId === 'start') {
             
             //console.log('Address to check: ' + address);
             buyOffers(i);
 
-        } else if (i.user.id === interaction.user.id && i.customId === 'sell') {
-
-            sellOffers(i);
-          
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
 
             currentIndex++
@@ -72,16 +64,6 @@ module.exports = {
             currentIndex--
             nextBuyOffer(i);
 
-        } else if (i.user.id === interaction.user.id && i.customId === 'nextSell') {
-
-            currentIndex++
-            nextSellOffer(i);
-
-        } else if (i.user.id === interaction.user.id && i.customId === 'prevSell') {
-            
-            currentIndex--
-            nextSellOffer(i);
-            
         } else {
 
             i.reply({ content: `These buttons are not for you!`, ephemeral: true });
@@ -98,7 +80,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`Time is up, systems shutting down`)
+            .setDescription(`Time is up, The Terminal is shutting down`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -110,227 +92,6 @@ module.exports = {
         //    console.log((`Collected ${collected.size} items`));
         //}
     });
-
-    async function nextBuyOffer(i) {
-        console.log(currentIndex);
-        console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
-
-        getBuyPrice();
-
-        console.log(lastIndexObj)
-        console.log(typeof(lastIndexObj))
-        console.log(currentIndex)
-        console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
-
-        const row = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('prevBuy')
-                .setLabel('Previous')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-            new ButtonBuilder()
-                .setLabel('More Info')
-                .setStyle(ButtonStyle.Link)
-                .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
-            new ButtonBuilder()
-                .setCustomId('nextBuy')
-                .setLabel('Next')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-        );                
-
-        const editBuyEmbed = new EmbedBuilder()
-            .setColor('DarkRed')
-            .setTitle(`Welcome to The Terminal`)
-            //.setAuthor({ name: client.user.username })
-            .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
-            .setThumbnail(client.user.avatarURL())
-            .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[currentIndex].NFTokenID}?thumbnail=true`)
-            .setTimestamp()
-            //.setFooter({ text: `${address}` });
-
-        i.update({ embeds: [editBuyEmbed], components: [row] });
-    }
-
-    async function prevBuyOffer(i) {
-        console.log(currentIndex);
-        console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
-
-        getBuyPrice();
-
-        console.log(lastIndexObj)
-        console.log(typeof(lastIndexObj))
-        console.log(currentIndex)
-        console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
-
-        //console.log(disable);    
-
-        const row = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('prevBuy')
-                .setLabel('Previous')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-            new ButtonBuilder()
-                .setLabel('More Info')
-                .setStyle(ButtonStyle.Link)
-                .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
-            new ButtonBuilder()
-                .setCustomId('nextBuy')
-                .setLabel('Next')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-        );                
-
-        const editBuyEmbed = new EmbedBuilder()
-            .setColor('DarkRed')
-            .setTitle(`Welcome to The Terminal`)
-            //.setAuthor({ name: client.user.username })
-            .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
-            .setThumbnail(client.user.avatarURL())
-            .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[currentIndex].NFTokenID}?thumbnail=true`)
-            .setTimestamp()
-            //.setFooter({ text: `${address}` });
-
-        i.update({ embeds: [editBuyEmbed], components: [row] });
-    }
-
-    async function getBuyPrice() {
-        rawAmount = currentOffers2.at(currentIndex).Amount;
-        //console.log(rawAmount);
-        amount = (Number(rawAmount))/1000000;
-        //console.log(amount);
-    }
-
-    async function nextSellOffer(i) {
-        console.log(currentIndex);
-        console.log(`There are ${currentSellOffers2.length} BUY offers when including only the highest offer on an NFT`);
-
-        getSellPrice();
-
-        console.log(lastIndexObj)
-        console.log(typeof(lastIndexObj))
-        console.log(currentIndex)
-        console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
-
-        const row = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('prevSell')
-                .setLabel('Previous')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-            new ButtonBuilder()
-                .setLabel('More Info')
-                .setStyle(ButtonStyle.Link)
-                .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
-            new ButtonBuilder()
-                .setCustomId('nextSell')
-                .setLabel('Next')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-        );                
-
-        const editSellEmbed = new EmbedBuilder()
-            .setColor('DarkRed')
-            .setTitle(`Welcome to The Terminal`)
-            //.setAuthor({ name: client.user.username })
-            .setDescription(`This address has ${currentSellOffers2.length} SELL offers, counting ONLY the lowest offer on an NFT.`)
-            .setThumbnail(client.user.avatarURL())
-            .addFields({ name: `The lowest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentSellOffers2[currentIndex].NFTokenID}?thumbnail=true`)
-            .setTimestamp()
-            //.setFooter({ text: `${address}` });
-
-        i.update({ embeds: [editSellEmbed], components: [row] });
-    }
-
-    async function prevSellOffer(i) {
-        console.log(currentIndex);
-        console.log(`There are ${currentSellOffers2.length} SELL offers when including only the lowest offer on an NFT.`);
-
-        getSellPrice();
-
-        console.log(lastIndexObj)
-        console.log(typeof(lastIndexObj))
-        console.log(currentIndex)
-        console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
-
-        //console.log(disable);    
-
-        const row = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setCustomId('prevSell')
-                .setLabel('Previous')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-            new ButtonBuilder()
-                .setLabel('More Info')
-                .setStyle(ButtonStyle.Link)
-                .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
-            new ButtonBuilder()
-                .setCustomId('nextSell')
-                .setLabel('Next')
-                .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
-        );                
-
-        const editSellEmbed = new EmbedBuilder()
-            .setColor('DarkRed')
-            .setTitle(`Welcome to The Terminal`)
-            //.setAuthor({ name: client.user.username })
-            .setDescription(`This address has ${currentSellOffers2.length} SELL offers when including only the lowest offer on an NFT.`)
-            .setThumbnail(client.user.avatarURL())
-            .addFields({ name: `The lowest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-            .setImage(`https://marketplace-api.onxrp.com/api/image/${currentSellOffers2[currentIndex].NFTokenID}?thumbnail=true`)
-            .setTimestamp()
-            //.setFooter({ text: `${address}` });
-
-        i.update({ embeds: [editSellEmbed], components: [row] });
-    }
-
-    async function getBuyPrice() {
-        rawAmount = currentOffers2.at(currentIndex).Amount;
-        //console.log(rawAmount);
-        amount = (Number(rawAmount))/1000000;
-        //console.log(amount);
-    }
-
-    async function getSellPrice() {
-        rawAmount = currentSellOffers2.at(currentIndex).Amount;
-        //console.log(rawAmount);
-        amount = (Number(rawAmount))/1000000;
-        //console.log(amount);
-    }
 
     async function buyOffers(i) {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
@@ -377,7 +138,7 @@ module.exports = {
                 const iterator = currentOffers2.keys();
 
                 for (const key2 of iterator) {
-                    console.log(key2);
+                    //console.log(key2);
                     currentOffers2[key2].index = key2
                 }
 
@@ -416,7 +177,7 @@ module.exports = {
                     .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
                     .setThumbnail(client.user.avatarURL())
                     .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentOffers2[currentIndex].NFTokenID}?thumbnail=true`)
+                    .setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
                     .setTimestamp()
                     //.setFooter({ text: `${address}` });
         
@@ -426,99 +187,112 @@ module.exports = {
         })
     };
 
-    async function sellOffers(i) {
-        await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
-            if(res.data) {
-                //console.log(res.data.data.offers)
-                //console.log(res.data.data.offers.length)
+    async function getBuyPrice() {
+        rawAmount = currentOffers2.at(currentIndex).Amount;
+        //console.log(rawAmount);
+        amount = (Number(rawAmount))/1000000;
+        //console.log(amount);
+    }
 
-                sellOffers = res.data.data.offers;
-                let currentSellOffers = [];
+    async function nextBuyOffer(i) {
+        //console.log(currentIndex);
+        //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
-                sellOffers.forEach(offer => {
-                    Object.entries(offer.sell).forEach(([key, val]) => {
-                        
-                        const findNFTIndex = currentSellOffers.findIndex(
-                            (nftid) => nftid.NFTokenID === offer.sell[key].NFTokenID
-                        )
+        getBuyPrice();
 
-                        if (findNFTIndex == -1) {
-                            currentSellOffers.push({
-                                "offerNo": key, 
-                                "Amount":offer.sell[key].Amount, 
-                                "NFTokenID": offer.sell[key].NFTokenID, 
-                                "OfferID": offer.sell[key].OfferID, 
-                                "Owner": offer.sell[key].Owner, 
-                                "Destination": offer.sell[key].Destination, 
-                                "Expiration": offer.sell[key].Expiration
-                            })
-                        } else {
-                            currentSellOffers[findNFTIndex] = {
-                                "offerNo": key, 
-                                "Amount":offer.sell[key].Amount, 
-                                "NFTokenID": offer.sell[key].NFTokenID, 
-                                "OfferID": offer.sell[key].OfferID, 
-                                "Owner": offer.sell[key].Owner, 
-                                "Destination": offer.sell[key].Destination, 
-                                "Expiration": offer.sell[key].Expiration
-                            }
-                        }
-                    })
-                })
+        //console.log(lastIndexObj)
+        //console.log(typeof(lastIndexObj))
+        //console.log(currentIndex)
+        //console.log(typeof(currentIndex))
 
-                currentSellOffers2 = currentSellOffers.map(v => ({...v, "index": null}))
+        if (lastIndexObj === currentIndex) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
 
-                const iterator = currentSellOffers2.keys();
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('prevBuy')
+                .setLabel('Previous')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+            new ButtonBuilder()
+                .setLabel('More Info')
+                .setStyle(ButtonStyle.Link)
+                .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
+            new ButtonBuilder()
+                .setCustomId('nextBuy')
+                .setLabel('Next')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+        );                
 
-                for (const key2 of iterator) {
-                    //console.log(key2);
-                    currentSellOffers2[key2].index = key2
-                }
+        const editBuyEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
+            .setThumbnail(client.user.avatarURL())
+            .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+            .setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
 
-                console.log(`There are ${currentSellOffers2.length} SELL offers when including only the lowest offer on an NFT`);
+        i.update({ embeds: [editBuyEmbed], components: [row] });
+    }
 
-                //console.log(currentSellOffers2.length);
-                lastIndexObj = (currentSellOffers2.length - 1);
-                //console.log(lastIndexObj);
+    async function prevBuyOffer(i) {
+        //console.log(currentIndex);
+        //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
-                currentIndex = 0;
+        getBuyPrice();
 
-                getSellPrice();
+        //console.log(lastIndexObj)
+        //console.log(typeof(lastIndexObj))
+        //console.log(currentIndex)
+        //console.log(typeof(currentIndex))
 
-                const row = new ActionRowBuilder()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setCustomId('prevSell')
-                        .setLabel('Previous')
-                        .setStyle(ButtonStyle.Primary)
-                        .setDisabled(true),
-                    new ButtonBuilder()
-                        .setLabel('More Info')
-                        .setStyle(ButtonStyle.Link)
-                        .setURL(`https://nftoken.id/?${currentSellOffers2[currentIndex].NFTokenID}`),
-                    new ButtonBuilder()
-                        .setCustomId('nextSell')
-                        .setLabel('Next')
-                        .setStyle(ButtonStyle.Primary)
-                        .setDisabled(false),
-                );                
+        if (lastIndexObj === currentIndex) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
 
-                const editSellEmbed = new EmbedBuilder()
-                    .setColor('DarkRed')
-                    .setTitle(`Welcome to The Terminal`)
-                    //.setAuthor({ name: client.user.username })
-                    .setDescription(`This address has ${currentSellOffers2.length} SELL offers, counting ONLY the lowest bid.`)
-                    .setThumbnail(client.user.avatarURL())
-                    .addFields({ name: `The lowest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
-                    .setImage(`https://marketplace-api.onxrp.com/api/image/${currentSellOffers2[currentIndex].NFTokenID}?thumbnail=true`)
-                    .setTimestamp()
-                    //.setFooter({ text: `${address}` });
-        
-                i.update({ embeds: [editSellEmbed], components: [row] });
-                //collector.stop('Collector stopped manually');
-            }
-        })
-    };
+        //console.log(disable);    
+
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('prevBuy')
+                .setLabel('Previous')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+            new ButtonBuilder()
+                .setLabel('More Info')
+                .setStyle(ButtonStyle.Link)
+                .setURL(`https://nftoken.id/?${currentOffers2[currentIndex].NFTokenID}`),
+            new ButtonBuilder()
+                .setCustomId('nextBuy')
+                .setLabel('Next')
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false),
+        );                
+
+        const editBuyEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`This address has ${currentOffers2.length} BUY offers, counting ONLY the highest bids.`)
+            .setThumbnail(client.user.avatarURL())
+            .addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
+            .setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+
+        i.update({ embeds: [editBuyEmbed], components: [row] });
+    }
 
     }
 };
