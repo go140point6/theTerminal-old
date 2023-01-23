@@ -161,10 +161,10 @@ module.exports = {
                     getNextIndexState();
                     getPrevIndexState();
 
-                    console.log(indexNextState);
-                    console.log(indexPrevState);
-                    console.log(typeof(indexNextState));
-                    console.log(typeof(indexPrevState));
+                    //console.log(indexNextState);
+                    //console.log(indexPrevState);
+                    //console.log(typeof(indexNextState));
+                    //console.log(typeof(indexPrevState));
 
                     const row = new ActionRowBuilder()
                     .addComponents(
@@ -172,7 +172,8 @@ module.exports = {
                             .setCustomId('prevBuy')
                             .setLabel('Previous')
                             .setStyle(ButtonStyle.Primary)
-                            .setDisabled(Boolean(indexPrevState)),
+                            //.setDisabled(Boolean(indexPrevState)),
+                            .setDisabled(indexPrevState),
                         new ButtonBuilder()
                             .setLabel('More Info')
                             .setStyle(ButtonStyle.Link)
@@ -181,7 +182,8 @@ module.exports = {
                             .setCustomId('nextBuy')
                             .setLabel('Next')
                             .setStyle(ButtonStyle.Primary)
-                            .setDisabled(Boolean(indexNextState)),
+                            //.setDisabled(Boolean(indexNextState)),
+                            .setDisabled(indexNextState),
                     );                
 
                     const editBuyEmbed = new EmbedBuilder()
