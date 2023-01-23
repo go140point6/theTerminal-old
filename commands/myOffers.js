@@ -11,7 +11,7 @@ var currentIndex;
 var lastIndexObj;
 var rawAmount;
 var amount;
-var indexState;
+var indexState = new Boolean();
 
 module.exports = {
     data: new SlashCommandBuilder()
