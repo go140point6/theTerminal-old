@@ -83,8 +83,9 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
             
             console.log('Address to check: ' + address);
-            collector.resetTimer(5000);
-            console.log(collector);
+            //collector.resetTimer(5000);
+            console.log(collector.options.time);
+            //console.log(collector);
             buyOffers(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
