@@ -83,16 +83,19 @@ module.exports = {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
             
             console.log('Address to check: ' + address);
+            collector.resetTimer(5000);
             buyOffers(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
 
             currentIndex++
+            collector.resetTimer(5000);
             nextBuyOffer(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'prevBuy') {
             
             currentIndex--
+            collector.resetTimer(5000);
             nextBuyOffer(i);
 
         } else {
