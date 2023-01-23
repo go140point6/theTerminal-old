@@ -302,7 +302,7 @@ module.exports = {
 
     async function noBuyOffers(i) {
 
-        const editBuyEmbed = new EmbedBuilder()
+        const editNoBuyOfersEmbed = new EmbedBuilder()
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
@@ -313,7 +313,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: `${address}` });
 
-        i.update({ embeds: [editBuyEmbed] });
+        i.update({ embeds: [editNoBuyOffersEmbed] });
         collector.stop('Collector stopped due to no BUY orders.');
     }  
     
