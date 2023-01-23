@@ -27,6 +27,7 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const address = interaction.options.getString("address", true);
         if (commandInProgress === true) {
             //console.log("Command is in progress");
 
@@ -45,7 +46,6 @@ module.exports = {
 
         } else {
         commandInProgress = true
-        const address = interaction.options.getString("address", true);
 
         const row = new ActionRowBuilder()
         .addComponents(
