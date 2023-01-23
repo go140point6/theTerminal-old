@@ -3,6 +3,8 @@ const axios = require('axios');
 const client = require('../index');
 const { sleep } = require('../utils/sleep')
 
+var commandInProgress = false;
+
 var offers;
 var sellOffers;
 var currentOffers2;
@@ -25,6 +27,10 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        if (commandInProgress = true) {
+            console.log("Command is in progress");
+        } else {
+        commandInProgress = true
         const address = interaction.options.getString("address", true);
 
         const row = new ActionRowBuilder()
@@ -46,7 +52,7 @@ module.exports = {
             .setTimestamp()
             .setFooter({ text: `${address}` });
 
-    await interaction.editReply({ embeds: [initialEmbed], components: [row] });
+    await interaction.reply({ embeds: [initialEmbed], components: [row] });
     //console.log(interaction.user.id);
     
     //const originalSender = interaction.user.id;
@@ -345,4 +351,5 @@ module.exports = {
     }  
     
     }
+}
 };
