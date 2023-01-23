@@ -221,11 +221,11 @@ module.exports = {
 
     async function getPrevIndexState() {
         if (currentIndex === 0) {
-            console.log(true)
-            //indexPrevState = true; //disables Previous button          
+            //console.log(true)
+            indexPrevState = true; //disables Previous button          
         } else {
-            console.log(false)
-            //indexPrevState = false; //enables Previous button
+            //console.log(false)
+            indexPrevState = false; //enables Previous button
         }
     }
 
