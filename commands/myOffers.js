@@ -158,7 +158,8 @@ module.exports = {
                     currentIndex = 0;
 
                     getBuyPrice();
-                    getIndexState();
+                    getNextIndexState();
+                    getPrevIndexState();
 
                     const row = new ActionRowBuilder()
                     .addComponents(
