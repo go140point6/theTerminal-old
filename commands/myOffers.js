@@ -16,6 +16,8 @@ var amount;
 var indexPrevState;
 var indexNextState;
 
+
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
@@ -75,7 +77,7 @@ module.exports = {
     //const filter = interaction => interaction.user.id === originalSender;
 
     //const collector = interaction.channel.createMessageComponentCollector(filter, { componentType: ComponentType.Button, time: 120000 });
-    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, time: 20000 });
+    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, time: 5000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
@@ -103,7 +105,7 @@ module.exports = {
         //console.log(`Collected ${collected.size} items`)
         //if (collected.size == 0) {
             //console.log(`It was zero`);
-            await interaction.editReply({ components: [] });
+            //await interaction.editReply({ components: [] });
             const shutdownEmbed = new EmbedBuilder()
 
             .setColor('DarkRed')
@@ -221,7 +223,6 @@ module.exports = {
                             .setCustomId('nextBuy')
                             .setLabel('Next')
                             .setStyle(ButtonStyle.Primary)
-                            //.setDisabled(Boolean(indexNextState)),
                             .setDisabled(indexNextState),
                     );                
 
