@@ -206,9 +206,12 @@ module.exports = {
         if (lastIndexObj === currentIndex) {
             console.log(true)
             indexState = true;
+            console.log(typeof(indexState))
+            
         } else {
             console.log(false)
             indexState = false;
+            console.log(typeof(indexState))
         }
     }
 
