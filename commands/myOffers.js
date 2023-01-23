@@ -27,7 +27,7 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        const address = interaction.options.getString("address", true);
+        
         if (commandInProgress === true) {
             //console.log("Command is in progress");
 
@@ -40,12 +40,13 @@ module.exports = {
                 //.addFields(embedFields)
                 //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
                 .setTimestamp()
-                .setFooter({ text: `${address}` });
+                //.setFooter({ text: `${address}` });
     
         await interaction.reply({ embeds: [waitEmbed] });
 
         } else {
         commandInProgress = true
+        const address = interaction.options.getString("address", true);
 
         const row = new ActionRowBuilder()
         .addComponents(
@@ -59,7 +60,8 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
+            //.setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
+            .setDescription(`${i.user.username} has requestd to see the current HIGHEST BID offers for address ${address}.  Processing...`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -101,23 +103,39 @@ module.exports = {
         //console.log(`Collected ${collected.size} items`)
         //if (collected.size == 0) {
             //console.log(`It was zero`);
+        if (i.user.id === interaction.user.id) {
             await interaction.editReply({ components: [] });
             const shutdownEmbed = new EmbedBuilder()
 
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`Time is up, The Terminal is shutting down`)
+            .setDescription(`Time is up, The Terminal is shutting down.`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
             .setTimestamp()
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
-            await interaction.editReply({ embeds: [shutdownEmbed], components: [] });
-        //} else {
-        //    console.log((`Collected ${collected.size} items`));
-        //}
+            await interaction.editReply({ embeds: [shutdownEmbed], components: [], ephemeral: true });
+            commandInProgress = false;
+        } else {
+            //console.log((`Collected ${collected.size} items`));
+            const availEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`I am available to show the next user their BUY offers. Proceed when ready.`)
+            .setThumbnail(client.user.avatarURL())
+            //.addFields(embedFields)
+            //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+
+    
+            await interaction.reply({ embeds: [availEmbed] });
+            commandInProgress = false;
+        }
     });
 
     async function buyOffers(i) {
@@ -221,7 +239,7 @@ module.exports = {
                         .setTimestamp()
                         //.setFooter({ text: `${address}` });
         
-                    i.update({ embeds: [editBuyEmbed], components: [row] });
+                    i.update({ embeds: [editBuyEmbed], components: [row], ephemeral: true });
                     //collector.stop('Collector stopped manually');
                 }
             }
@@ -297,7 +315,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: `${address}` });
 
-        i.update({ embeds: [editBuyEmbed], components: [row] });
+        i.update({ embeds: [editBuyEmbed], components: [row], ephemeral: true });
     }
 
     async function prevBuyOffer(i) {
@@ -343,7 +361,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: `${address}` });
 
-        i.update({ embeds: [editBuyEmbed], components: [row] });
+        i.update({ embeds: [editBuyEmbed], components: [row], ephemeral: true });
     }
 
     async function noBuyOffers(i) {
@@ -359,7 +377,7 @@ module.exports = {
             .setTimestamp()
             //.setFooter({ text: `${address}` });
 
-        i.update({ embeds: [editNoBuyOffersEmbed] });
+        i.update({ embeds: [editNoBuyOffersEmbed], ephemeral: true });
         await sleep(5000); // wait 5 seconds
         collector.stop('Collector stopped due to no BUY orders.');
     }  
