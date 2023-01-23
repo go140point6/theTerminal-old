@@ -134,7 +134,7 @@ module.exports = {
                 })
 
                 if (!currentOffers.length) {
-                    noBuyOffers();
+                    noBuyOffers(i);
                 } else {
 
                     currentOffers2 = currentOffers.map(v => ({...v, "index": null}))
@@ -154,7 +154,6 @@ module.exports = {
 
                     currentIndex = 0;
 
-                    if (!currentOffers)
                     getBuyPrice();
 
                     const row = new ActionRowBuilder()
