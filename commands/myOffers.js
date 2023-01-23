@@ -60,15 +60,15 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            //.setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
-            .setDescription(`${interaction.user.username} has requestd to see the current HIGHEST BID offers for address ${address}.  Processing...`)
+            .setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
+            //.setDescription(`${interaction.user.username} has requestd to see the current HIGHEST BID offers.  Processing...`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
             .setTimestamp()
             .setFooter({ text: `${address}` });
 
-    await interaction.reply({ embeds: [initialEmbed], components: [row] });
+    await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
     //console.log(interaction.user.id);
     
     //const originalSender = interaction.user.id;
