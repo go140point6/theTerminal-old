@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
-const sleep = require('../utils/sleep')
+const { sleep } = require('../utils/sleep')
 
 var offers;
 var sellOffers;
@@ -306,7 +306,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`This address currently has ZERO BUY offers.  Shutting down.`)
+            .setDescription(`This address currently has ZERO BUY offers.  Shutting down in 5 seconds...`)
             .setThumbnail(client.user.avatarURL())
             //.addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
             //.setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
