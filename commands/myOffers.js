@@ -11,7 +11,7 @@ var currentIndex;
 var lastIndexObj;
 var rawAmount;
 var amount;
-var getIndexState = false;
+var getIndexState;
 
 module.exports = {
     data: new SlashCommandBuilder()
