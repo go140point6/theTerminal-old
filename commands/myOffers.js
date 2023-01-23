@@ -11,6 +11,7 @@ var currentIndex;
 var lastIndexObj;
 var rawAmount;
 var amount;
+var indexState;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -156,6 +157,7 @@ module.exports = {
                     currentIndex = 0;
 
                     getBuyPrice();
+                    getIndexState();
 
                     const row = new ActionRowBuilder()
                     .addComponents(
@@ -163,7 +165,7 @@ module.exports = {
                             .setCustomId('prevBuy')
                             .setLabel('Previous')
                             .setStyle(ButtonStyle.Primary)
-                            .setDisabled(true),
+                            .setDisabled(`${indexState}`),
                         new ButtonBuilder()
                             .setLabel('More Info')
                             .setStyle(ButtonStyle.Link)
@@ -172,7 +174,7 @@ module.exports = {
                             .setCustomId('nextBuy')
                             .setLabel('Next')
                             .setStyle(ButtonStyle.Primary)
-                            .setDisabled(false),
+                            .setDisabled(`${indexState}`),
                     );                
 
                     const editBuyEmbed = new EmbedBuilder()
@@ -200,22 +202,27 @@ module.exports = {
         //console.log(amount);
     }
 
+    async function getIndexState() {
+        if (lastIndexObj === currentIndex) {
+            console.log(true)
+            let indexState = true;
+        } else {
+            console.log(false)
+            let indexState = false;
+        }
+    }
+
     async function nextBuyOffer(i) {
         //console.log(currentIndex);
         //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
         getBuyPrice();
+        getIndexState();
 
         //console.log(lastIndexObj)
         //console.log(typeof(lastIndexObj))
         //console.log(currentIndex)
         //console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
 
         const row = new ActionRowBuilder()
         .addComponents(
@@ -223,7 +230,7 @@ module.exports = {
                 .setCustomId('prevBuy')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
+                .setDisabled(`${indexState}`),
             new ButtonBuilder()
                 .setLabel('More Info')
                 .setStyle(ButtonStyle.Link)
@@ -232,7 +239,7 @@ module.exports = {
                 .setCustomId('nextBuy')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
+                .setDisabled(`${indexState}`),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
@@ -254,17 +261,12 @@ module.exports = {
         //console.log(`There are ${currentOffers2.length} BUY offers when including only the highest offer on an NFT`);
 
         getBuyPrice();
+        getIndexState();
 
         //console.log(lastIndexObj)
         //console.log(typeof(lastIndexObj))
         //console.log(currentIndex)
         //console.log(typeof(currentIndex))
-
-        if (lastIndexObj === currentIndex) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
 
         //console.log(disable);    
 
@@ -274,7 +276,7 @@ module.exports = {
                 .setCustomId('prevBuy')
                 .setLabel('Previous')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
+                .setDisabled(`${indexState}`),
             new ButtonBuilder()
                 .setLabel('More Info')
                 .setStyle(ButtonStyle.Link)
@@ -283,7 +285,7 @@ module.exports = {
                 .setCustomId('nextBuy')
                 .setLabel('Next')
                 .setStyle(ButtonStyle.Primary)
-                .setDisabled(false),
+                .setDisabled(`${indexState}`),
         );                
 
         const editBuyEmbed = new EmbedBuilder()
