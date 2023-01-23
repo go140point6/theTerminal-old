@@ -11,7 +11,8 @@ var currentIndex;
 var lastIndexObj;
 var rawAmount;
 var amount;
-var getIndexState;
+var indexState;
+//var NextState;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -165,7 +166,8 @@ module.exports = {
                             .setCustomId('prevBuy')
                             .setLabel('Previous')
                             .setStyle(ButtonStyle.Primary)
-                            .setDisabled(Boolean(`${indexState}`)),
+                            //.setDisabled(Boolean(`${indexState}`)),
+                            .setDisabled(`${indexState}`),
                         new ButtonBuilder()
                             .setLabel('More Info')
                             .setStyle(ButtonStyle.Link)
@@ -174,7 +176,8 @@ module.exports = {
                             .setCustomId('nextBuy')
                             .setLabel('Next')
                             .setStyle(ButtonStyle.Primary)
-                            .setDisabled(Boolean(`${indexState}`)),
+                            //.setDisabled(Boolean(`${indexState}`)),
+                            .setDisabled(`${indexState}`),
                     );                
 
                     const editBuyEmbed = new EmbedBuilder()
