@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, ComponentType } = require('discord.js');
 const axios = require('axios');
 const client = require('../index');
+const sleep = require('../utils/sleep')
 
 var offers;
 var sellOffers;
@@ -313,6 +314,7 @@ module.exports = {
             //.setFooter({ text: `${address}` });
 
         i.update({ embeds: [editNoBuyOffersEmbed] });
+        await sleep(5000); // wait 5 seconds
         collector.stop('Collector stopped due to no BUY orders.');
     }  
     
