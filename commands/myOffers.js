@@ -77,13 +77,13 @@ module.exports = {
     //const filter = interaction => interaction.user.id === originalSender;
 
     //const collector = interaction.channel.createMessageComponentCollector(filter, { componentType: ComponentType.Button, time: 120000 });
-    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, time: 10000 });
+    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, idle: 10000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
             
             console.log('Address to check: ' + address);
-            collector.resetTimer(5000);
+            //collector.resetTimer(5000);
             console.log(collector.options.time);
             //console.log(collector);
             buyOffers(i);
