@@ -36,7 +36,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`To view current BUY offers on this address, press Get Started.`)
+            .setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -51,7 +51,7 @@ module.exports = {
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
             
-            //console.log('Address to check: ' + address);
+            console.log('Address to check: ' + address);
             buyOffers(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
@@ -96,8 +96,8 @@ module.exports = {
     async function buyOffers(i) {
         await axios.get(`https://api.xrpldata.com/api/v1/xls20-nfts/offers/nftowner/${address}`).then(res => {
             if(res.data) {
-                //console.log(res.data.data.offers)
-                //console.log(res.data.data.offers.length)
+                console.log(res.data.data.offers)
+                console.log(res.data.data.offers.length)
 
                 offers = res.data.data.offers;
                 let currentOffers = [];
