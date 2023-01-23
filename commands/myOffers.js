@@ -46,7 +46,7 @@ module.exports = {
             .setTimestamp()
             .setFooter({ text: `${address}` });
 
-    await interaction.reply({ embeds: [initialEmbed], components: [row] });
+    await interaction.editReply({ embeds: [initialEmbed], components: [row] });
     //console.log(interaction.user.id);
     
     //const originalSender = interaction.user.id;
