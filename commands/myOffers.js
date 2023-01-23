@@ -27,7 +27,7 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        if (commandInProgress = true) {
+        if (commandInProgress === true) {
             console.log("Command is in progress");
         } else {
         commandInProgress = true
