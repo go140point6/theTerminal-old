@@ -42,7 +42,7 @@ module.exports = {
                 .setTimestamp()
                 //.setFooter({ text: `${address}` });
     
-        await interaction.reply({ embeds: [waitEmbed] });
+        await interaction.reply({ embeds: [waitEmbed], ephemeral: true });
 
         } else {
         commandInProgress = true
@@ -75,7 +75,7 @@ module.exports = {
     //const filter = interaction => interaction.user.id === originalSender;
 
     //const collector = interaction.channel.createMessageComponentCollector(filter, { componentType: ComponentType.Button, time: 120000 });
-    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, time: 120000 });
+    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, time: 20000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
@@ -103,7 +103,6 @@ module.exports = {
         //console.log(`Collected ${collected.size} items`)
         //if (collected.size == 0) {
             //console.log(`It was zero`);
-        if (i.user.id === interaction.user.id) {
             await interaction.editReply({ components: [] });
             const shutdownEmbed = new EmbedBuilder()
 
@@ -118,8 +117,7 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
             await interaction.editReply({ embeds: [shutdownEmbed], components: [], ephemeral: true });
-            commandInProgress = false;
-        } else {
+        
             //console.log((`Collected ${collected.size} items`));
             const availEmbed = new EmbedBuilder()
             .setColor('DarkRed')
@@ -135,7 +133,6 @@ module.exports = {
     
             await interaction.reply({ embeds: [availEmbed] });
             commandInProgress = false;
-        }
     });
 
     async function buyOffers(i) {
