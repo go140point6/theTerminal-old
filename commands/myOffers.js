@@ -30,8 +30,21 @@ module.exports = {
         if (commandInProgress === true) {
             //console.log("Command is in progress");
 
+            const waitEmbed = new EmbedBuilder()
+                .setColor('DarkRed')
+                .setTitle(`Welcome to The Terminal`)
+                //.setAuthor({ name: client.user.username })
+                .setDescription(`I am currently processing another user's request, please wait until I am ready.`)
+                .setThumbnail(client.user.avatarURL())
+                //.addFields(embedFields)
+                //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+                .setTimestamp()
+                .setFooter({ text: `${address}` });
+    
+        await interaction.reply({ embeds: [waitEmbed] });
+
         } else {
-        //commandInProgress = true
+        commandInProgress = true
         const address = interaction.options.getString("address", true);
 
         const row = new ActionRowBuilder()
