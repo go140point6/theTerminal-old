@@ -161,6 +161,11 @@ module.exports = {
                     getNextIndexState();
                     getPrevIndexState();
 
+                    console.log(indexNextState);
+                    console.log(indexPrevState);
+                    console.log(typeof(indexNextState))
+                    console.log(typeof(indexPrevState))
+
                     const row = new ActionRowBuilder()
                     .addComponents(
                         new ButtonBuilder()
