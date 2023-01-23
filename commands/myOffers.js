@@ -205,10 +205,10 @@ module.exports = {
     async function getIndexState() {
         if (lastIndexObj === currentIndex) {
             console.log(true)
-            let indexState = true;
+            indexState = true;
         } else {
             console.log(false)
-            let indexState = false;
+            indexState = false;
         }
     }
 
