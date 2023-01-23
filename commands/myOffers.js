@@ -49,10 +49,11 @@ module.exports = {
     await interaction.reply({ embeds: [initialEmbed], components: [row] });
     //console.log(interaction.user.id);
     
-    const originalSender = interaction.user.id;
-    const filter = interaction => interaction.user.id === originalSender;
+    //const originalSender = interaction.user.id;
+    //const filter = interaction => interaction.user.id === originalSender;
 
-    const collector = interaction.channel.createMessageComponentCollector(filter, { componentType: ComponentType.Button, time: 120000 });
+    //const collector = interaction.channel.createMessageComponentCollector(filter, { componentType: ComponentType.Button, time: 120000 });
+    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, time: 120000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
