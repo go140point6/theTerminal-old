@@ -11,6 +11,7 @@ var currentIndex;
 var lastIndexObj;
 var rawAmount;
 var amount;
+var address;
 var indexPrevState;
 var indexNextState;
 
@@ -247,7 +248,7 @@ module.exports = {
     async function initialEmbed() {
     
         commandInProgress = true
-        const address = interaction.options.getString("address", true);
+        address = interaction.options.getString("address", true);
     
         const row = new ActionRowBuilder()
         .addComponents(
