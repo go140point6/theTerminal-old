@@ -126,7 +126,7 @@ module.exports = {
             await interaction.editReply({ embeds: [shutdownEmbed], components: [], ephemeral: true });
             commandInProgress = false;
         
-            /*
+            
             //console.log((`Collected ${collected.size} items`));
             const availEmbed = new EmbedBuilder()
             .setColor('DarkRed')
@@ -140,9 +140,9 @@ module.exports = {
             //.setFooter({ text: `${address}` });
 
     
-            await interaction.reply({ embeds: [availEmbed] });
+            await interaction.followUp({ embeds: [availEmbed] });
             commandInProgress = false;
-            */
+            
     });
 
     async function buyOffers(i) {
