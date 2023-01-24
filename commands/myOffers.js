@@ -69,6 +69,21 @@ module.exports = {
             .setFooter({ text: `${address}` });
 
     await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
+
+        //console.log((`Collected ${collected.size} items`));
+        const noEmbed = new EmbedBuilder()
+        .setColor('DarkRed')
+        .setTitle(`Welcome to The Terminal`)
+        //.setAuthor({ name: client.user.username })
+        .setDescription(`I am currently processing a user's request, please do not use the /myoffers command until I am ready.`)
+        .setThumbnail(client.user.avatarURL())
+        //.addFields(embedFields)
+        //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+        .setTimestamp()
+        //.setFooter({ text: `${address}` });
+                
+        await interaction.followUp({ embeds: [noEmbed] });
+
     //console.log(interaction.user.id);
     //console.log(interaction);
     
