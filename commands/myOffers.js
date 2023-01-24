@@ -27,11 +27,11 @@ module.exports = {
     ),
     async execute(interaction) {
         if (commandInProgress === true) {
-            await commandInProgress();
+            await commandInProgress(interaction);
         } else {
-            await initialEmbed();
-            await noEmbed();
-            await watchCollector();
+            await initialEmbed(interaction);
+            await noEmbed(interaction);
+            await watchCollector(interaction);
         }
     }
 }
