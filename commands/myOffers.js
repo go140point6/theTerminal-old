@@ -70,7 +70,7 @@ module.exports = {
 
     await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
     //console.log(interaction.user.id);
-    console.log(interaction);
+    //console.log(interaction);
     
     //const originalSender = interaction.user.id;
     //const filter = interaction => interaction.user.id === originalSender;
@@ -84,7 +84,7 @@ module.exports = {
             console.log('Address to check: ' + address);
             //collector.resetTimer(5000);
             //console.log(collector.options.time);
-            console.log(collector);
+            //console.log(collector);
             buyOffers(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
@@ -106,7 +106,7 @@ module.exports = {
     }) 
 
     collector.on('end', async (collected, reason) => {
-        console.log(reason);
+        //console.log(reason);
         //console.log(`Collected ${collected.size} items`)
         //if (collected.size == 0) {
             //console.log(`It was zero`);
