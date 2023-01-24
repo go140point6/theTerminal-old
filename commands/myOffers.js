@@ -77,14 +77,14 @@ module.exports = {
     //const filter = interaction => interaction.user.id === originalSender;
 
     //const collector = interaction.channel.createMessageComponentCollector(filter, { componentType: ComponentType.Button, time: 120000 });
-    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, idle: 10000 });
+    const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, idle: 30000 });
 
     collector.on('collect', async i => {
         if (i.user.id === interaction.user.id && i.customId === 'start') {
             
             console.log('Address to check: ' + address);
             //collector.resetTimer(5000);
-            console.log(collector.options.time);
+            //console.log(collector.options.time);
             //console.log(collector);
             buyOffers(i);
 
@@ -116,7 +116,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`Time is up, The Terminal is shutting down.`)
+            .setDescription(`System inactive for 30 seconds, The Terminal is shutting down.`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -124,7 +124,9 @@ module.exports = {
             //.setFooter({ text: 'Powered by OnTheDex.Live', iconURL: 'https://images2.imgbox.com/bb/cc/OJPcux6J_o.jpg' });
         
             await interaction.editReply({ embeds: [shutdownEmbed], components: [], ephemeral: true });
+            commandInProgress = false;
         
+            /*
             //console.log((`Collected ${collected.size} items`));
             const availEmbed = new EmbedBuilder()
             .setColor('DarkRed')
@@ -140,6 +142,7 @@ module.exports = {
     
             await interaction.reply({ embeds: [availEmbed] });
             commandInProgress = false;
+            */
     });
 
     async function buyOffers(i) {
