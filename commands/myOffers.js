@@ -16,8 +16,6 @@ var amount;
 var indexPrevState;
 var indexNextState;
 
-
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
@@ -85,7 +83,7 @@ module.exports = {
             console.log('Address to check: ' + address);
             //collector.resetTimer(5000);
             //console.log(collector.options.time);
-            //console.log(collector);
+            console.log(collector);
             buyOffers(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
