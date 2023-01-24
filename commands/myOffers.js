@@ -70,6 +70,7 @@ module.exports = {
 
     await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
     //console.log(interaction.user.id);
+    console.log(interaction);
     
     //const originalSender = interaction.user.id;
     //const filter = interaction => interaction.user.id === originalSender;
