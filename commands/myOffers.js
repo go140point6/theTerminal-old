@@ -105,6 +105,7 @@ module.exports = {
     }) 
 
     collector.on('end', async (collected, reason) => {
+        console.log(collected);
         //console.log(`Collected ${collected.size} items`)
         //if (collected.size == 0) {
             //console.log(`It was zero`);
