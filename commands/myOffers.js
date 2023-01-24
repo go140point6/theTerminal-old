@@ -90,13 +90,13 @@ module.exports = {
         } else if (i.user.id === interaction.user.id && i.customId === 'nextBuy') {
 
             currentIndex++
-            collector.resetTimer(5000);
+            //collector.resetTimer(5000);
             nextBuyOffer(i);
 
         } else if (i.user.id === interaction.user.id && i.customId === 'prevBuy') {
             
             currentIndex--
-            collector.resetTimer(5000);
+            //collector.resetTimer(5000);
             nextBuyOffer(i);
 
         } else {
@@ -116,7 +116,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`System inactive for 30 seconds, The Terminal is shutting down.`)
+            .setDescription(`System inactive, The Terminal is shutting down.`)
             .setThumbnail(client.user.avatarURL())
             //.addFields(embedFields)
             //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
@@ -376,7 +376,7 @@ module.exports = {
             .setColor('DarkRed')
             .setTitle(`Welcome to The Terminal`)
             //.setAuthor({ name: client.user.username })
-            .setDescription(`This address currently has ZERO BUY offers.  Shutting down in 5 seconds...`)
+            .setDescription(`This address currently has ZERO BUY offers.  Shutting down in 10 seconds...`)
             .setThumbnail(client.user.avatarURL())
             //.addFields({ name: `The highest offer for this NFT:`, value: `${amount.toString()} XRP`, inline: false })
             //.setImage(`https://nftoken.id/images/?id=${currentOffers2[currentIndex].NFTokenID}`)
@@ -384,7 +384,7 @@ module.exports = {
             //.setFooter({ text: `${address}` });
 
         i.update({ embeds: [editNoBuyOffersEmbed], ephemeral: true });
-        await sleep(5000); // wait 5 seconds
+        await sleep(10000); // wait 5 seconds
         collector.stop('Collector stopped due to no BUY orders.');
     }  
     
