@@ -36,7 +36,7 @@ module.exports = {
     }
 }
 
-async function commandInProgress() {
+async function commandInProgress(interaction) {
 
     const waitEmbed = new EmbedBuilder()
         .setColor('DarkRed')
@@ -52,7 +52,7 @@ async function commandInProgress() {
     await interaction.reply({ embeds: [waitEmbed], ephemeral: true });
 }
 
-async function initialEmbed() {
+async function initialEmbed(interaction) {
 
     commandInProgress = true
     address = interaction.options.getString("address", true);
@@ -80,7 +80,7 @@ async function initialEmbed() {
     await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
 }
 
-async function noEmbed() {
+async function noEmbed(interaction) {
     const noEmbed = new EmbedBuilder()
     .setColor('DarkRed')
     .setTitle(`Welcome to The Terminal`)
