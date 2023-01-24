@@ -14,51 +14,6 @@ var amount;
 var indexPrevState;
 var indexNextState;
 
-async function commandInProgress() {
-
-    const waitEmbed = new EmbedBuilder()
-        .setColor('DarkRed')
-        .setTitle(`Welcome to The Terminal`)
-        //.setAuthor({ name: client.user.username })
-        .setDescription(`I am currently processing another user's request, please wait until I am ready.`)
-        .setThumbnail(client.user.avatarURL())
-        //.addFields(embedFields)
-        //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
-        .setTimestamp()
-        //.setFooter({ text: `${address}` });
-    
-    await interaction.reply({ embeds: [waitEmbed], ephemeral: true });
-
-}
-
-async function initialEmbed() {
-
-    commandInProgress = true
-    const address = interaction.options.getString("address", true);
-
-    const row = new ActionRowBuilder()
-    .addComponents(
-        new ButtonBuilder()
-            .setCustomId('start')
-            .setLabel('Get Started')
-            .setStyle(ButtonStyle.Success),
-    );
-
-    const initialEmbed = new EmbedBuilder()
-        .setColor('DarkRed')
-        .setTitle(`Welcome to The Terminal`)
-        //.setAuthor({ name: client.user.username })
-        .setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
-        //.setDescription(`${interaction.user.username} has requestd to see the current HIGHEST BID offers.  Processing...`)
-        .setThumbnail(client.user.avatarURL())
-        //.addFields(embedFields)
-        //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
-        .setTimestamp()
-        .setFooter({ text: `${address}` });
-
-    await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
-}
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('myoffers')
@@ -271,6 +226,51 @@ module.exports = {
             }
          })
     };
+
+    async function commandInProgress() {
+
+        const waitEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`I am currently processing another user's request, please wait until I am ready.`)
+            .setThumbnail(client.user.avatarURL())
+            //.addFields(embedFields)
+            //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+            .setTimestamp()
+            //.setFooter({ text: `${address}` });
+        
+        await interaction.reply({ embeds: [waitEmbed], ephemeral: true });
+    
+    }
+    
+    async function initialEmbed() {
+    
+        commandInProgress = true
+        const address = interaction.options.getString("address", true);
+    
+        const row = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId('start')
+                .setLabel('Get Started')
+                .setStyle(ButtonStyle.Success),
+        );
+    
+        const initialEmbed = new EmbedBuilder()
+            .setColor('DarkRed')
+            .setTitle(`Welcome to The Terminal`)
+            //.setAuthor({ name: client.user.username })
+            .setDescription(`I will show you the current HIGHEST BUY offers for this address.`)
+            //.setDescription(`${interaction.user.username} has requestd to see the current HIGHEST BID offers.  Processing...`)
+            .setThumbnail(client.user.avatarURL())
+            //.addFields(embedFields)
+            //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
+            .setTimestamp()
+            .setFooter({ text: `${address}` });
+    
+        await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
+    }
 
     async function getBuyPrice() {
         rawAmount = currentOffers2.at(currentIndex).Amount;
