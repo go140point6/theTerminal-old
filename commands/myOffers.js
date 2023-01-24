@@ -95,7 +95,7 @@ async function noEmbed(interaction) {
     await interaction.followUp({ embeds: [noEmbed] });
 }
 
-async function watchCollector() {
+async function watchCollector(interaction) {
     const collector = interaction.channel.createMessageComponentCollector({componentType: ComponentType.Button, idle: 30000 });
 
     collector.on('collect', async i => {
