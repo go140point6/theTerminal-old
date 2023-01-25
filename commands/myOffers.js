@@ -30,7 +30,7 @@ module.exports = {
             await commandInProgress(interaction);
         } else {
             await initialEmbed(interaction);
-            await noEmbed(interaction);
+            //await noEmbed(interaction);
             await watchCollector(interaction);
         }
     }
