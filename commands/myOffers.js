@@ -75,7 +75,7 @@ async function initialEmbed(interaction) {
         //.addFields(embedFields)
         //.setImage('https://onxrp-marketplace.s3.us-east-2.amazonaws.com/nft-images/00081AF4B6C6354AE81B765895498071D5E681DB44D3DE8F1589271700000598-32c83d6e902f8.png')
         .setTimestamp()
-        .setFooter({ text: `${address}` });
+        //.setFooter({ text: `${address}` });
 
     await interaction.reply({ embeds: [initialEmbed], components: [row], ephemeral: true });
 }
